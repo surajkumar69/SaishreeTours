@@ -10,6 +10,7 @@ import AboutUs from "@/components/AboutUs";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import MobileStickyBar from "@/components/MobileStickyBar";
 
 export default function Home() {
   return (
@@ -49,6 +50,9 @@ export default function Home() {
 
       {/* Floating 24/7 WhatsApp & Quick Call Pill */}
       <FloatingWhatsApp />
+
+      {/* Sticky Mobile Bottom Booking Bar */}
+      <MobileStickyBar />
     </div>
   );
 }

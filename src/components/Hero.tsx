@@ -77,7 +77,7 @@ export default function Hero() {
                 </div>
                 <div>
                   <div className="text-xs font-bold text-white">24/7 Available</div>
-                  <div className="text-[10px] text-gray-400">On-Time Pickup</div>
+                  <div className="text-[10px] text-gray-400">Prompt Pickup</div>
                 </div>
               </div>
 
@@ -87,17 +87,17 @@ export default function Hero() {
                 </div>
                 <div>
                   <div className="text-xs font-bold text-white">Verified Drivers</div>
-                  <div className="text-[10px] text-gray-400">Safe Highway Pros</div>
+                  <div className="text-[10px] text-gray-400">Commercial RTO Lic.</div>
                 </div>
               </div>
 
               <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-black/40 border border-gray-800/80 backdrop-blur-sm col-span-2 sm:col-span-1">
-                <div className="w-8 h-8 rounded-xl bg-[#ff4d4d]/15 text-[#ff6b6b] flex items-center justify-center shrink-0">
-                  <Star className="w-4 h-4 fill-[#ff6b6b]" />
+                <div className="w-8 h-8 rounded-xl bg-[#d4a843]/15 text-[#d4a843] flex items-center justify-center shrink-0">
+                  <Sparkles className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-white">4.9 / 5.0 Rating</div>
-                  <div className="text-[10px] text-gray-400">10,000+ Trips Done</div>
+                  <div className="text-xs font-bold text-white">Transparent Fares</div>
+                  <div className="text-[10px] text-gray-400">No Surprise Extras</div>
                 </div>
               </div>
             </div>

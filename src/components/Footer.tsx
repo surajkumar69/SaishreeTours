@@ -37,7 +37,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-gray-800/80">
           {/* Col 1: Brand & Bio */}
           <div className="lg:col-span-4 space-y-4">
-            <Link href="#hero" className="inline-block">
+            <Link href="/" className="inline-block">
               <div className="relative h-14 w-48">
                 <Image
                   src={COMMON_IMAGES.logo}
@@ -117,17 +117,69 @@ export default function Footer() {
               Popular Routes
             </h4>
             <ul className="space-y-1.5 text-xs">
-              {popularRoutes.slice(0, 7).map((route, i) => (
-                <li key={i}>
-                  <Link
-                    href="#hero"
-                    className="hover:text-[#d4a843] transition-colors flex items-center gap-1.5 text-gray-400 hover:translate-x-0.5 transform duration-150"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#d4a843]/60" />
-                    <span>{route}</span>
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link
+                  href="/pune-to-mumbai-cab"
+                  className="hover:text-[#d4a843] transition-colors flex items-center gap-1.5 text-gray-400 hover:translate-x-0.5 transform duration-150"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#d4a843]" />
+                  <span>Pune to Mumbai Cab (Daily)</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/tempo-traveller-pune"
+                  className="hover:text-[#d4a843] transition-colors flex items-center gap-1.5 text-gray-400 hover:translate-x-0.5 transform duration-150"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#d4a843]" />
+                  <span>17 Seater Tempo Traveller Pune</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/pune-airport-cab"
+                  className="hover:text-[#d4a843] transition-colors flex items-center gap-1.5 text-gray-400 hover:translate-x-0.5 transform duration-150"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#d4a843]" />
+                  <span>Pune Airport Pickup & Drop</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#destinations"
+                  className="hover:text-[#d4a843] transition-colors flex items-center gap-1.5 text-gray-400 hover:translate-x-0.5 transform duration-150"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#d4a843]/60" />
+                  <span>Pune to Mahabaleshwar Outstation</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#destinations"
+                  className="hover:text-[#d4a843] transition-colors flex items-center gap-1.5 text-gray-400 hover:translate-x-0.5 transform duration-150"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#d4a843]/60" />
+                  <span>Pune to Shirdi Sai Darshan</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#destinations"
+                  className="hover:text-[#d4a843] transition-colors flex items-center gap-1.5 text-gray-400 hover:translate-x-0.5 transform duration-150"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#d4a843]/60" />
+                  <span>Pune to Goa Coastal Trip</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#fleet"
+                  className="hover:text-[#d4a843] transition-colors flex items-center gap-1.5 text-gray-400 hover:translate-x-0.5 transform duration-150"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#d4a843]/60" />
+                  <span>Luxury Bus Rental in Pune</span>
+                </Link>
+              </li>
             </ul>
           </div>
 

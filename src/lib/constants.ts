@@ -344,9 +344,9 @@ export const SERVICES_DATA: ServiceItem[] = [
     id: "railway-station-transfers",
     title: "Railway Station Transfers",
     category: "Cab & Taxi",
-    shortDescription: "Quick, guaranteed on-time pickups and drops for Pune Junction, Shivajinagar, and Lonavala railway stations.",
+    shortDescription: "Punctual, scheduled pickups and drops for Pune Junction, Shivajinagar, and Lonavala railway stations.",
     fullDescription: "Skip the chaos of auto queues and dynamic surge prices. Have your driver waiting right outside the station with cold AC ready.",
-    highlights: ["Guaranteed Pickup", "No Surge Pricing", "Station Platform Assistance", "Available Late Night"],
+    highlights: ["Scheduled Station Pickup", "No Surge Pricing", "Station Platform Assistance", "Available Late Night"],
     icon: "Train",
     image: SERVICE_IMAGES.railwayStationTransfers,
   },
@@ -498,7 +498,7 @@ export const WHY_CHOOSE_US = [
   },
   {
     title: "Reliable Service",
-    description: "Guaranteed on-time doorstep arrival, 24/7 dispatch support, zero sudden cancellations, and live ride monitoring.",
+    description: "Punctual doorstep arrival with proactive trip coordination, 24/7 dispatch support, zero sudden cancellations, and live route tracking.",
     icon: "Clock",
   },
   {

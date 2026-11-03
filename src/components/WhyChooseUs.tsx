@@ -11,6 +11,7 @@ import {
   Sliders,
   CheckCircle2,
   Sparkles,
+  ShieldCheck,
 } from "lucide-react";
 import { WHY_CHOOSE_US } from "@/lib/constants";
 
@@ -79,32 +80,37 @@ export default function WhyChooseUs() {
             );
           })}
 
-          {/* Quick Statistics Card */}
+          {/* Transparent Pricing Policy Card */}
           <div className="bg-gradient-to-br from-[#1a202c] via-[#12161f] to-[#0b0d10] border border-[#d4a843]/30 rounded-3xl p-6 flex flex-col justify-between text-left">
             <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-[#d4a843] mb-2">
-                Trusted by Pune
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#d4a843] mb-2">
+                <ShieldCheck className="w-4 h-4 text-[#d4a843]" />
+                Fare Transparency
               </div>
-              <div className="text-3xl sm:text-4xl font-black text-white font-mono">
-                10,000+
+              <div className="text-xl sm:text-2xl font-black text-white">
+                Itemized Billing
               </div>
-              <div className="text-xs text-gray-400 mt-1 mb-4">
-                Successful journeys completed across Maharashtra and India.
-              </div>
+              <p className="text-xs text-gray-400 mt-2 mb-4 leading-relaxed">
+                Every quote provides complete clarity before you depart. No hidden charges or surprise deductions on the road.
+              </p>
             </div>
 
-            <div className="space-y-2 pt-3 border-t border-gray-800 text-xs text-gray-300">
-              <div className="flex justify-between">
-                <span className="text-gray-400">Punctuality Record:</span>
-                <span className="font-bold text-emerald-400">99.8%</span>
+            <div className="space-y-2.5 pt-3 border-t border-gray-800 text-xs text-gray-300">
+              <div className="flex justify-between items-center">
+                <span className="text-gray-400">Highway Tolls & FASTag:</span>
+                <span className="font-semibold text-white">Itemized / Actuals</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-400">Google / Traveler Rating:</span>
-                <span className="font-bold text-[#f3cf7a]">4.9 / 5.0 ★</span>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-400">Airport & City Parking:</span>
+                <span className="font-semibold text-white">At Actual Slips</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-400">Support Availability:</span>
-                <span className="font-bold text-white">24/7/365</span>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-400">Night Driver Allowance:</span>
+                <span className="font-semibold text-[#f3cf7a]">Only after 10:00 PM</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-400">Pune Helpline & Dispatch:</span>
+                <span className="font-bold text-emerald-400">24/7 Available</span>
               </div>
             </div>
           </div>

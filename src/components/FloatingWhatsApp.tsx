@@ -17,7 +17,7 @@ export default function FloatingWhatsApp() {
   }, []);
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3 select-none">
+    <div className="fixed bottom-16 sm:bottom-5 right-4 sm:right-5 z-40 flex flex-col items-end gap-3 select-none">
       {/* Floating Prompt Tooltip */}
       {showTooltip && (
         <div className="relative bg-[#161a22] border border-[#d4a843]/40 rounded-2xl p-3 pr-8 shadow-2xl backdrop-blur-md max-w-xs animate-in fade-in slide-in-from-bottom-2 duration-300">

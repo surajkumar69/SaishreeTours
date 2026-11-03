@@ -21,12 +21,12 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#hero" },
-    { name: "About Us", href: "#about" },
-    { name: "Our Fleet", href: "#fleet" },
-    { name: "Our Services", href: "#services" },
-    { name: "Tour Packages", href: "#destinations" },
-    { name: "Contact Us", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/#about" },
+    { name: "Our Fleet", href: "/#fleet" },
+    { name: "Our Services", href: "/#services" },
+    { name: "Tour Packages", href: "/#destinations" },
+    { name: "Contact Us", href: "/#contact" },
   ];
 
   return (
@@ -74,7 +74,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="#hero" className="flex items-center gap-3 group">
+            <Link href="/" className="flex items-center gap-3 group">
               <div className="relative h-12 w-36 sm:h-14 sm:w-44 transition-transform duration-300 group-hover:scale-105">
                 <Image
                   src={COMMON_IMAGES.logo}
