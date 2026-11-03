@@ -23,7 +23,7 @@ import { getWhatsAppBookingUrl } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Tempo Traveller Booking Pune | 17 Seater Luxury AC Hire | Saishree Tours",
   description:
-    "Hire 17-seater luxury Force Tempo Traveller in Pune with pushback seats, dual AC, and high roof comfort. Ideal for family pilgrimages to Shirdi, Ashtavinayak, and group outings to Mahabaleshwar and Goa. Call +91 85308 47555.",
+    "Hire 17-seater luxury Force Tempo Traveller in Pune with pushback seats, dual AC, and high roof comfort. Ideal for family pilgrimages to Shirdi, Ashtavinayak, and group outings to Mahabaleshwar and Goa. Booking: +91 85308 47555 | Office: +91 96042 52201.",
   keywords: [
     "Tempo Traveller Booking Pune",
     "17 Seater Tempo Traveller Pune",

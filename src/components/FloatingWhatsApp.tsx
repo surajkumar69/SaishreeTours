@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { MessageCircle, Phone, X } from "lucide-react";
+import { MessageCircle, Phone, Building, X } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
 import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 
@@ -37,15 +37,26 @@ export default function FloatingWhatsApp() {
         </div>
       )}
 
-      {/* Buttons Row */}
+      {/* Buttons Row - BOTH Phone Numbers + WhatsApp */}
       <div className="flex items-center gap-2">
-        {/* Quick Phone Call Button (Mobile & Desktop) */}
+        {/* Quick Phone Call Button: Booking Helpline */}
         <a
           href={`tel:${BUSINESS_INFO.phoneRaw}`}
-          aria-label="Call Saishree Tours Helpline"
+          aria-label={`Call Booking Helpline ${BUSINESS_INFO.phone}`}
+          title={`Call Booking: ${BUSINESS_INFO.phone}`}
           className="w-11 h-11 rounded-full bg-gray-900 border border-gray-700 hover:border-[#d4a843] text-[#d4a843] flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all"
         >
           <Phone className="w-5 h-5" />
+        </a>
+
+        {/* Quick Phone Call Button: Office Desk */}
+        <a
+          href={`tel:${BUSINESS_INFO.officePhoneRaw}`}
+          aria-label={`Call Office Desk ${BUSINESS_INFO.officePhone}`}
+          title={`Call Office: ${BUSINESS_INFO.officePhone}`}
+          className="w-11 h-11 rounded-full bg-gray-900 border border-gray-700 hover:border-blue-400 text-blue-400 flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all"
+        >
+          <Building className="w-5 h-5" />
         </a>
 
         {/* WhatsApp Floating Pill / Circle */}

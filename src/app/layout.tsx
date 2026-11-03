@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   },
   title: "Saishree Tours | Pune to Mumbai Cab, Outstation Taxi & Bus Rental Service Pune",
   description:
-    "Leading cab and bus rental service in Pune. Book Pune to Mumbai daily cabs, Pune airport transfers, outstation taxis, 17-seater Tempo Travellers, and luxury buses with transparent fares. Call +91 85308 47555.",
+    "Leading cab and bus rental service in Pune. Book Pune to Mumbai daily cabs, Pune airport transfers, outstation taxis, 17-seater Tempo Travellers, and luxury buses with transparent fares. Booking: +91 85308 47555 | Office: +91 96042 52201.",
   keywords: [
     "Pune to Mumbai Cab",
     "Pune to Mumbai Daily Cab Service",
@@ -73,6 +73,22 @@ const jsonLd = {
   "@id": "https://saishreetours.vercel.app/#organization",
   "url": "https://saishreetours.vercel.app",
   "telephone": "+918530847555",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+91-85308-47555",
+      "contactType": "reservations",
+      "availableLanguage": ["English", "Hindi", "Marathi"],
+      "areaServed": "IN"
+    },
+    {
+      "@type": "ContactPoint",
+      "telephone": "+91-96042-52201",
+      "contactType": "customer service",
+      "availableLanguage": ["English", "Hindi", "Marathi"],
+      "areaServed": "IN"
+    }
+  ],
   "priceRange": "₹₹",
   "address": {
     "@type": "PostalAddress",

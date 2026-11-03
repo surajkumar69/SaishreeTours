@@ -9,6 +9,8 @@ import {
   ArrowRight,
   ShieldCheck,
   PhoneCall,
+  Phone,
+  Building,
   Sparkles,
 } from "lucide-react";
 import { HOW_IT_WORKS, BUSINESS_INFO } from "@/lib/constants";
@@ -94,20 +96,28 @@ export default function HowItWorks() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3 w-full md:w-auto">
+          <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto">
             <a
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40 hover:scale-105 transition-transform"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40 hover:scale-105 transition-transform"
             >
-              <span>Book via WhatsApp</span>
+              <span>WhatsApp Booking</span>
             </a>
             <a
               href={`tel:${BUSINESS_INFO.phoneRaw}`}
-              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs sm:text-sm font-semibold flex items-center justify-center border border-gray-700 transition-colors"
+              className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gray-900 border border-gray-700/80 hover:border-[#d4a843] text-[#f3cf7a] text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-colors"
             >
-              <span>Call Helpline</span>
+              <Phone className="w-4 h-4 text-[#d4a843]" />
+              <span>Booking: {BUSINESS_INFO.phone}</span>
+            </a>
+            <a
+              href={`tel:${BUSINESS_INFO.officePhoneRaw}`}
+              className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gray-900/60 border border-gray-800 hover:border-blue-400 text-gray-200 text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition-colors"
+            >
+              <Building className="w-4 h-4 text-blue-400" />
+              <span>Office: {BUSINESS_INFO.officePhone}</span>
             </a>
           </div>
         </div>

@@ -23,7 +23,7 @@ import { getWhatsAppBookingUrl } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Pune Airport Pickup & Drop Cab Service | 24/7 Transfers | Saishree Tours",
   description:
-    "Reliable Pune Airport (PNQ) and Mumbai Airport (BOM) cab booking. Professional chauffeurs, flight tracking, punctual curbside pickup, and transparent fares with parking explained. Call +91 85308 47555.",
+    "Reliable Pune Airport (PNQ) and Mumbai Airport (BOM) cab booking. Professional chauffeurs, flight tracking, punctual curbside pickup, and transparent fares with parking explained. Booking: +91 85308 47555 | Office: +91 96042 52201.",
   keywords: [
     "Pune Airport Pickup and Drop",
     "Pune Airport Cab",

@@ -25,7 +25,7 @@ import { getWhatsAppBookingUrl, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Pune to Mumbai Cab Service | Daily One-Way & Round Trip Taxi | Saishree Tours",
   description:
-    "Book Pune to Mumbai cab with Saishree Tours. Doorstep pickup across Pune, fast 3-hour expressway transit, sedans, Ertiga & Innova Crysta cabs. Transparent fares with tolls clearly itemized. Call +91 85308 47555.",
+    "Book Pune to Mumbai cab with Saishree Tours. Doorstep pickup across Pune, fast 3-hour expressway transit, sedans, Ertiga & Innova Crysta cabs. Transparent fares with tolls clearly itemized. Booking: +91 85308 47555 | Office: +91 96042 52201.",
   keywords: [
     "Pune to Mumbai Cab",
     "Pune to Mumbai Daily Cab Service",

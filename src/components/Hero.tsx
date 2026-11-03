@@ -7,6 +7,7 @@ import {
   Star,
   Clock,
   Phone,
+  Building,
   MessageCircle,
   MapPin,
   Sparkles,
@@ -102,13 +103,13 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Direct Call / Contact Quick Action */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            {/* Direct Call & WhatsApp Quick Actions - BOTH Numbers Clickable */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
               <a
                 href={getGeneralWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20bd5a] hover:to-[#0f7a6e] shadow-lg shadow-emerald-950/40 transition-transform active:scale-95"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20bd5a] hover:to-[#0f7a6e] shadow-lg shadow-emerald-950/40 transition-transform active:scale-95"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
                 <span>Instant WhatsApp Quote</span>
@@ -116,10 +117,20 @@ export default function Hero() {
 
               <a
                 href={`tel:${BUSINESS_INFO.phoneRaw}`}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl text-sm font-semibold text-gray-200 bg-gray-900/80 hover:bg-gray-800 border border-gray-700/80 transition-all hover:border-[#d4a843]"
+                className="inline-flex items-center gap-2 px-4 py-3 rounded-2xl text-xs sm:text-sm font-bold text-white bg-gray-900/90 hover:bg-gray-800 border border-gray-700/80 transition-all hover:border-[#d4a843]"
+                title={`Call Booking Hotline ${BUSINESS_INFO.phone}`}
               >
                 <Phone className="w-4 h-4 text-[#d4a843]" />
-                <span>Call {BUSINESS_INFO.phone}</span>
+                <span>Booking: {BUSINESS_INFO.phone}</span>
+              </a>
+
+              <a
+                href={`tel:${BUSINESS_INFO.officePhoneRaw}`}
+                className="inline-flex items-center gap-2 px-4 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-gray-300 bg-gray-900/60 hover:bg-gray-800 border border-gray-800 transition-all hover:border-blue-400"
+                title={`Call Office Desk ${BUSINESS_INFO.officePhone}`}
+              >
+                <Building className="w-4 h-4 text-blue-400" />
+                <span>Office: {BUSINESS_INFO.officePhone}</span>
               </a>
             </div>
 

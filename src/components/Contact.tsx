@@ -61,40 +61,46 @@ export default function Contact() {
               </h3>
 
               <div className="space-y-4">
-                {/* Primary Phone */}
+                {/* Number 1: Booking / WhatsApp Hotline */}
                 <a
                   href={`tel:${BUSINESS_INFO.phoneRaw}`}
-                  className="flex items-start gap-4 p-4 rounded-2xl bg-[#0b0d10] border border-gray-800/80 hover:border-[#d4a843]/50 transition-all group"
+                  className="flex items-start gap-4 p-4 rounded-2xl bg-[#0b0d10] border border-[#d4a843]/40 hover:border-[#d4a843] transition-all group shadow-md"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-[#d4a843]/15 text-[#d4a843] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                    <Phone className="w-5 h-5" />
+                  <div className="w-12 h-12 rounded-xl bg-[#d4a843]/20 text-[#d4a843] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                    <Phone className="w-6 h-6" />
                   </div>
-                  <div>
-                    <div className="text-xs text-gray-400">Direct Booking Hotline</div>
-                    <div className="text-base font-bold text-white group-hover:text-[#f3cf7a] transition-colors">
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <div className="text-xs text-[#d4a843] font-bold uppercase tracking-wider">Booking & WhatsApp Number</div>
+                      <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 px-2 py-0.5 rounded-full">24/7 LIVE</span>
+                    </div>
+                    <div className="text-lg sm:text-xl font-black text-white group-hover:text-[#f3cf7a] transition-colors mt-0.5">
                       {BUSINESS_INFO.phone}
                     </div>
-                    <div className="text-[11px] text-emerald-400 font-medium mt-0.5">
-                      Available 24/7 on Call & WhatsApp
+                    <div className="text-xs text-gray-400 mt-0.5">
+                      Direct Cab Bookings, Fare Quotes & Instant WhatsApp Reservation
                     </div>
                   </div>
                 </a>
 
-                {/* Office Phone */}
+                {/* Number 2: Office Calling Desk */}
                 <a
                   href={`tel:${BUSINESS_INFO.officePhoneRaw}`}
-                  className="flex items-start gap-4 p-4 rounded-2xl bg-[#0b0d10] border border-gray-800/80 hover:border-[#d4a843]/50 transition-all group"
+                  className="flex items-start gap-4 p-4 rounded-2xl bg-[#0b0d10] border border-blue-500/30 hover:border-blue-400 transition-all group shadow-md"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                    <Building className="w-5 h-5" />
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                    <Building className="w-6 h-6" />
                   </div>
-                  <div>
-                    <div className="text-xs text-gray-400">Office Desk Number</div>
-                    <div className="text-base font-bold text-white group-hover:text-[#f3cf7a] transition-colors">
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <div className="text-xs text-blue-400 font-bold uppercase tracking-wider">Office & Calling Number</div>
+                      <span className="text-[10px] font-semibold text-blue-300 bg-blue-950/60 border border-blue-800/80 px-2 py-0.5 rounded-full">OFFICE DESK</span>
+                    </div>
+                    <div className="text-lg sm:text-xl font-bold text-white group-hover:text-[#f3cf7a] transition-colors mt-0.5">
                       {BUSINESS_INFO.officePhone}
                     </div>
-                    <div className="text-[11px] text-gray-400 mt-0.5">
-                      Dispatch & Administrative Office
+                    <div className="text-xs text-gray-400 mt-0.5">
+                      Dispatch Office, Bus Charters, Corporate Accounts & Support
                     </div>
                   </div>
                 </a>
