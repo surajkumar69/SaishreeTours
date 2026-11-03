@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Phone, MessageCircle, Menu, X, Clock, MapPin, ChevronRight } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
+import { COMMON_IMAGES } from "@/lib/images";
 import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 
 export default function Header() {
@@ -76,7 +77,7 @@ export default function Header() {
             <Link href="#hero" className="flex items-center gap-3 group">
               <div className="relative h-12 w-36 sm:h-14 sm:w-44 transition-transform duration-300 group-hover:scale-105">
                 <Image
-                  src="/images/logo.png"
+                  src={COMMON_IMAGES.logo}
                   alt="Saishree Tours Logo"
                   fill
                   sizes="(max-width: 640px) 150px, 200px"
@@ -165,7 +166,7 @@ export default function Header() {
               <div className="flex items-center justify-between pb-5 border-b border-gray-800">
                 <div className="relative h-10 w-32">
                   <Image
-                    src="/images/logo.png"
+                    src={COMMON_IMAGES.logo}
                     alt="Saishree Tours"
                     fill
                     className="object-contain"

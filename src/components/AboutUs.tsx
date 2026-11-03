@@ -15,6 +15,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
+import { FLEET_IMAGES } from "@/lib/images";
 import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 
 export default function AboutUs() {
@@ -27,7 +28,7 @@ export default function AboutUs() {
             <div className="relative rounded-3xl overflow-hidden border border-gray-800 shadow-2xl">
               <div className="relative h-96 sm:h-[460px] w-full">
                 <Image
-                  src="/images/fleet-innova-crysta.jpg"
+                  src={FLEET_IMAGES.innovaCrysta}
                   alt="Saishree Tours Chauffeur Driven Luxury Innova Crysta"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"

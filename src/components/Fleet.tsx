@@ -70,10 +70,10 @@ export default function Fleet() {
             >
               <div>
                 {/* Vehicle Image Container */}
-                <div className="relative h-56 sm:h-64 w-full bg-[#0a0c10] overflow-hidden">
+                <div className="relative aspect-[16/9] w-full bg-[#0a0c10] overflow-hidden rounded-t-3xl">
                   <Image
                     src={vehicle.image}
-                    alt={`${vehicle.name} - Saishree Tours Pune`}
+                    alt={`${vehicle.name} (${vehicle.category}) - Saishree Tours Pune`}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-500"

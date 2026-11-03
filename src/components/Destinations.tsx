@@ -41,7 +41,7 @@ export default function Destinations() {
             >
               <div>
                 {/* Destination Image */}
-                <div className="relative h-52 w-full bg-[#0a0c10] overflow-hidden">
+                <div className="relative aspect-[16/9] w-full bg-[#0a0c10] overflow-hidden rounded-t-3xl">
                   <Image
                     src={dest.image}
                     alt={`${dest.name} Tour Package - Saishree Tours`}

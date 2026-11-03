@@ -111,10 +111,10 @@ export default function Services() {
               >
                 <div>
                   {/* Service Image */}
-                  <div className="relative h-44 w-full bg-[#0a0c10] overflow-hidden">
+                  <div className="relative aspect-[16/9] w-full bg-[#0a0c10] overflow-hidden rounded-t-3xl">
                     <Image
                       src={service.image}
-                      alt={`${service.title} - Saishree Tours`}
+                      alt={`${service.title} - Saishree Tours Travel Service`}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                       className="object-cover object-center group-hover:scale-105 transition-transform duration-500"

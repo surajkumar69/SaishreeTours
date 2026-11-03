@@ -14,6 +14,7 @@ import {
   Heart,
 } from "lucide-react";
 import { BUSINESS_INFO, FLEET_DATA, SERVICES_DATA } from "@/lib/constants";
+import { COMMON_IMAGES } from "@/lib/images";
 import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 
 export default function Footer() {
@@ -39,7 +40,7 @@ export default function Footer() {
             <Link href="#hero" className="inline-block">
               <div className="relative h-14 w-48">
                 <Image
-                  src="/images/logo.png"
+                  src={COMMON_IMAGES.logo}
                   alt="Saishree Tours Logo"
                   fill
                   sizes="200px"

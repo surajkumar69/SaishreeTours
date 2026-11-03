@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import BookingForm from "./BookingForm";
 import { BUSINESS_INFO } from "@/lib/constants";
+import { COMMON_IMAGES } from "@/lib/images";
 import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 
 export default function Hero() {
@@ -22,7 +23,7 @@ export default function Hero() {
       {/* Background Image with Dark Vignette & Gradient Overlays */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero-banner.jpg"
+          src={COMMON_IMAGES.heroBanner}
           alt="Saishree Tours Premium Fleet on Western Ghats Highway at Sunset"
           fill
           priority
