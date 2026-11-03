@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --gold: #d4a843;
+    --gold-light: #f3cf7a;
+    --gold-dark: #b88a28;
+    --brand-red: #d32f2f;
+    --brand-dark: #0b0d10;
+    --brand-surface: #13171f;
+    --brand-card: #181d26;
+    --brand-border: #262c38;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: #0b0d10;
+  color: #f3f4f6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0d10;
+}
+::-webkit-scrollbar-thumb {
+  background: #262c38;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4a843;
+}
+
+/* Glassmorphism & Gold glows */
+.glass-panel {
+  background: rgba(19, 23, 31, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(24, 29, 38, 0.9) 0%, rgba(17, 21, 28, 0.95) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 168, 67, 0.15);
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px rgba(212, 168, 67, 0.2);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #f8df97 0%, #d4a843 50%, #b88a28 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.red-gradient-text {
+  background: linear-gradient(135deg, #ff6b6b 0%, #d32f2f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
