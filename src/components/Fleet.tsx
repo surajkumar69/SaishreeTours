@@ -50,7 +50,7 @@ export default function Fleet() {
       id: "maruti-ertiga",
       title: "Prime / Family",
       model: "Maruti Suzuki Ertiga",
-      capacity: "6-7 Passengers",
+      capacity: "5-6 Passengers",
       image: "/images/fleet-maruti-ertiga.jpg",
       tag: "Family Favorite MPV",
       badge: "Spacious Family MPV",

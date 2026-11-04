@@ -64,12 +64,12 @@ export const FLEET_DATA: Vehicle[] = [
     id: "maruti-ertiga",
     name: "Maruti Suzuki Ertiga",
     category: "MPV",
-    capacity: "6-7 Passengers",
+    capacity: "5-6 Passengers",
     luggage: "3-4 Bags",
     ac: true,
     image: FLEET_IMAGES.marutiErtiga,
     features: ["Flexible 3 Rows", "High Fuel Economy", "Dual AC", "Family Favorite"],
-    description: "Spacious 7-seater MPV engineered for family weekend getaways, airport drops with luggage, and budget-friendly group road trips.",
+    description: "Spacious 5-6 seater MPV engineered for family weekend getaways, airport drops with luggage, and budget-friendly group road trips.",
     popular: true,
     tag: "Family Choice",
   },
@@ -398,6 +398,17 @@ export interface Destination {
 }
 
 export const POPULAR_DESTINATIONS: Destination[] = [
+  {
+    id: "diveagar-beach-resort",
+    name: "Diveagar Beach View Resort",
+    tagline: "Sea View Rooms, Dining & Lush Green Beach Stay",
+    distanceFromPune: "160 km",
+    travelTime: "4.5 Hours",
+    image: "/images/diveagar-beach-resort.jpg",
+    popularFor: ["Sea View Rooms", "In-house Dining", "Wi-Fi Access", "Ample Parking"],
+    description: "Luxury Konkan coastal stay at Diveagar Beach View Resort in Maharashtra with direct sea view rooms, in-house dining, lush green surroundings, and dedicated Pune cab transfers.",
+    bestTime: "September to May",
+  },
   {
     id: "lonavala-khandala",
     name: "Lonavala & Khandala",
