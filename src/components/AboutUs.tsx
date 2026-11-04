@@ -78,7 +78,7 @@ export default function AboutUs() {
             </p>
 
             <p className="text-sm text-gray-600 leading-relaxed">
-              Every trip is handled with absolute punctuality, professional RTO-verified chauffeurs, spotless climate-controlled interiors, and 100% upfront transparent billing.
+              Every trip is handled with absolute punctuality, professional RTO-verified chauffeurs, spotless climate-controlled cabins, and 100% upfront transparent billing.
             </p>
 
             {/* Feature Checklist */}

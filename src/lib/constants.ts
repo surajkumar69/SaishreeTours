@@ -258,7 +258,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: "Group Trips",
     category: "Buses & Tempo",
     shortDescription: "Hassle-free group travel for friends, colleges, and clubs in comfortable 17-seater Tempo Travellers and mini-buses.",
-    fullDescription: "Travel together, sing along, and make unforgettable memories. Roomy interiors with high-power audio systems and ample luggage boot.",
+    fullDescription: "Travel together, sing along, and make unforgettable memories. Roomy pushback seating with high-power audio systems and ample luggage boot.",
     highlights: ["Travel Together", "Pushback Seating", "Custom Music System", "Generous Luggage Hold"],
     icon: "Users",
     image: SERVICE_IMAGES.groupTrips,
@@ -491,7 +491,7 @@ export const POPULAR_DESTINATIONS: Destination[] = [
 export const WHY_CHOOSE_US = [
   {
     title: "Comfortable Vehicles",
-    description: "Spotless clean, sanitized interiors, working dual AC, and plush ergonomic seating across our entire fleet.",
+    description: "Spotless clean, sanitized vehicles, working dual AC, and plush ergonomic seating across our entire fleet.",
     icon: "Car",
   },
   {
