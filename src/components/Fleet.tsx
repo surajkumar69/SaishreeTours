@@ -35,7 +35,7 @@ export default function Fleet() {
       capacity: "4 Passengers",
       image: "/images/fleet-swift-dzire.jpg",
       tag: "Best City & Highway Value",
-      price: "From ₹11/km",
+      badge: "AC Chauffeur Driven",
     },
     {
       id: "mahindra-scorpio",
@@ -44,7 +44,7 @@ export default function Fleet() {
       capacity: "6-7 Passengers",
       image: "/images/fleet-mahindra-scorpio.jpg",
       tag: "High Ground Clearance",
-      price: "From ₹15/km",
+      badge: "SUV Highway Comfort",
     },
     {
       id: "maruti-ertiga",
@@ -53,7 +53,7 @@ export default function Fleet() {
       capacity: "6-7 Passengers",
       image: "/images/fleet-maruti-ertiga.jpg",
       tag: "Family Favorite MPV",
-      price: "From ₹14/km",
+      badge: "Spacious Family MPV",
     },
     {
       id: "innova-crysta",
@@ -62,7 +62,7 @@ export default function Fleet() {
       capacity: "6-7 Passengers",
       image: "/images/fleet-innova-crysta.jpg",
       tag: "Executive VIP Luxury",
-      price: "From ₹18/km",
+      badge: "Executive VIP Comfort",
     },
     {
       id: "tempo-traveller-17",
@@ -71,7 +71,7 @@ export default function Fleet() {
       capacity: "17-45 Passengers",
       image: "/images/fleet-tempo-traveller-17.jpg",
       tag: "Pushback Group Travel",
-      price: "From ₹25/km",
+      badge: "Luxury Group Travel",
     },
   ];
 
@@ -120,8 +120,8 @@ export default function Fleet() {
                 </div>
 
                 <div className="mt-3 pt-2 border-t border-gray-100 flex items-center justify-between">
-                  <span className="text-[11px] font-bold text-[#a0cc28]">
-                    {item.price}
+                  <span className="text-[11px] font-bold text-[#6e9418]">
+                    {item.badge}
                   </span>
                   <span className="text-[10px] font-bold text-gray-700 bg-gray-100 group-hover:bg-[#a0cc28] group-hover:text-black px-2 py-0.5 rounded-full transition-colors">
                     Book
@@ -248,7 +248,7 @@ export default function Fleet() {
                     className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-bold text-white bg-[#25D366] hover:bg-[#20bd5a] shadow-sm transition-all transform group-hover:scale-101"
                   >
                     <MessageCircle className="w-4 h-4 fill-white" />
-                    <span>Inquire Rates on WhatsApp</span>
+                    <span>Book on WhatsApp</span>
                   </a>
                 </div>
               </div>

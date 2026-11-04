@@ -236,7 +236,7 @@ export default function Header() {
                   className="block p-2.5 bg-gray-50 hover:bg-[#a0cc28]/10 rounded-xl border border-gray-200 transition-colors"
                 >
                   <div className="text-xs font-bold text-gray-900">Pune ⇄ Mumbai Expressway</div>
-                  <div className="text-[11px] text-gray-500">From ₹2,499 • 3 Hours Express</div>
+                  <div className="text-[11px] text-gray-500">Doorstep Pickup • 3 Hours Express</div>
                 </Link>
                 <Link
                   href="/pune-airport-cab"
@@ -244,7 +244,7 @@ export default function Header() {
                   className="block p-2.5 bg-gray-50 hover:bg-[#a0cc28]/10 rounded-xl border border-gray-200 transition-colors"
                 >
                   <div className="text-xs font-bold text-gray-900">Pune / Mumbai Airport Transfers</div>
-                  <div className="text-[11px] text-gray-500">From ₹800 • Punctual Curbside Pickup</div>
+                  <div className="text-[11px] text-gray-500">Flight Tracking • Curbside Pickup</div>
                 </Link>
                 <Link
                   href="/tempo-traveller-pune"
@@ -252,7 +252,7 @@ export default function Header() {
                   className="block p-2.5 bg-gray-50 hover:bg-[#a0cc28]/10 rounded-xl border border-gray-200 transition-colors"
                 >
                   <div className="text-xs font-bold text-gray-900">17 Seater Tempo Traveller</div>
-                  <div className="text-[11px] text-gray-500">From ₹25/km • Pushback Luxury Seats</div>
+                  <div className="text-[11px] text-gray-500">Group Outstation • Pushback Luxury Seats</div>
                 </Link>
               </div>
             </div>
