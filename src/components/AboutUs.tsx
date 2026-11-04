@@ -19,34 +19,39 @@ export default function AboutUs() {
   return (
     <section id="about" className="py-20 sm:py-24 bg-[#f8f9fb] text-gray-900 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Column: Chauffeur & Vehicle Showcase */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden border border-gray-200 shadow-xl bg-white">
-              <div className="relative h-96 sm:h-[460px] w-full">
-                <Image
-                  src={FLEET_IMAGES.innovaCrysta}
-                  alt="Saishree Tours Chauffeur Driven Luxury Innova Crysta"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover object-center"
-                />
+          <div className="lg:col-span-5 space-y-4">
+            {/* Properly Sized Image Container Showing Complete Car with Original Proportions */}
+            <div className="relative aspect-[16/10] w-full rounded-3xl overflow-hidden bg-gray-100 border border-gray-200 shadow-xl group">
+              <Image
+                src={FLEET_IMAGES.toyotaInnova}
+                alt="Saishree Tours Toyota Innova Chauffeur Driven Taxi in Pune"
+                fill
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover object-center group-hover:scale-102 transition-transform duration-500"
+                priority
+              />
+              <div className="absolute top-3.5 left-3.5 z-10">
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/95 text-gray-900 shadow-sm border border-gray-200">
+                  Toyota Innova • Executive Fleet
+                </span>
               </div>
+            </div>
 
-              {/* Experience Badge */}
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-gray-200 shadow-lg">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#a0cc28]/20 border border-[#a0cc28]/40 flex items-center justify-center text-[#6e9418] shrink-0">
-                    <Award className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="text-gray-900 font-bold text-sm">
-                      Pune&apos;s Trusted Travel Partner
-                    </h4>
-                    <p className="text-[11px] text-gray-500">
-                      Based in New Sangvi, Pune. Serving all Maharashtra &amp; India.
-                    </p>
-                  </div>
+            {/* Experience & Trust Badge */}
+            <div className="p-4 rounded-2xl bg-white border border-gray-200 shadow-md">
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-xl bg-[#a0cc28]/20 border border-[#a0cc28]/40 flex items-center justify-center text-[#6e9418] shrink-0">
+                  <Award className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="text-gray-900 font-bold text-sm sm:text-base">
+                    Pune&apos;s Trusted Travel Partner
+                  </h4>
+                  <p className="text-xs text-gray-500">
+                    Based in New Sangvi, Pune. Serving all Maharashtra &amp; India.
+                  </p>
                 </div>
               </div>
             </div>
