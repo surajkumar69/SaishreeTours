@@ -74,7 +74,8 @@ const jsonLd = {
   "url": "https://saishreetours.vercel.app",
   "sameAs": [
     "https://www.facebook.com/share/1CH7iBG2Kh/?mibextid=wwXIfr",
-    "https://www.instagram.com/saishreetours09?cplk=NXJ4NXQwMHdmeDF1&utm_source=qr"
+    "https://www.instagram.com/saishreetours09?cplk=NXJ4NXQwMHdmeDF1&utm_source=qr",
+    "https://youtube.com/@saishreetours?si=cWI6upOCJpY9rXMg"
   ],
   "telephone": "+918530847555",
   "contactPoint": [

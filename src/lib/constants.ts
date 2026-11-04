@@ -19,6 +19,7 @@ export const BUSINESS_INFO = {
   workingHours: "24 Hours / 7 Days a Week",
   facebook: "https://www.facebook.com/share/1CH7iBG2Kh/?mibextid=wwXIfr",
   instagram: "https://www.instagram.com/saishreetours09?cplk=NXJ4NXQwMHdmeDF1&utm_source=qr",
+  youtube: "https://youtube.com/@saishreetours?si=cWI6upOCJpY9rXMg",
 };
 
 export interface Vehicle {
