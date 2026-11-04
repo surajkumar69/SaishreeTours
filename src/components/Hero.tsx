@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { Clock, Shield, Sparkles } from "lucide-react";
 import BookingForm from "./BookingForm";
+import HeroSlideshow from "./HeroSlideshow";
 import { COMMON_IMAGES } from "@/lib/images";
 
 export default function Hero() {
@@ -24,7 +25,7 @@ export default function Hero() {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center flex-1 flex flex-col items-center justify-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center flex-1 flex flex-col items-center">
         {/* Main Headline (Exact match for the typography and uppercase bold layout in reference) */}
         <div className="max-w-4xl mx-auto space-y-2 sm:space-y-3 mb-6 sm:mb-8">
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.08] uppercase drop-shadow-xl">
@@ -36,7 +37,10 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Centerpiece: Careem-Themed Map Pin Booking Form */}
+        {/* Full-Width Automatic Destination Slideshow */}
+        <HeroSlideshow />
+
+        {/* Centerpiece: Careem-Themed Map Pin Booking Form (Positioned below the slideshow) */}
         <BookingForm />
       </div>
 

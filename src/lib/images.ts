@@ -57,3 +57,103 @@ export const COMMON_IMAGES = {
   logo: "/images/logo.png",
   heroBanner: "/images/hero-banner.jpg",
 } as const;
+
+export interface DestinationSlide {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  image: string;
+  location: string;
+}
+
+export const MAHABALESHWAR_SLIDES: DestinationSlide[] = [
+  {
+    id: "mahabaleshwar-valley",
+    name: "Mahabaleshwar Panoramic Valley",
+    tagline: "Heart of the Western Ghats",
+    description: "Lush green rolling hills, tranquil valleys, and breathtaking natural scenery.",
+    image: "/images/mahabaleshwar/1-mahabaleshwar-valley.jpg",
+    location: "Mahabaleshwar, Maharashtra",
+  },
+  {
+    id: "venna-lake",
+    name: "Venna Lake",
+    tagline: "Serene Waterway & Boating",
+    description: "Scenic paddle boats, shimmering water reflections, and lush eucalyptus groves.",
+    image: "/images/mahabaleshwar/2-venna-lake.jpg",
+    location: "Venna Lake, Mahabaleshwar",
+  },
+  {
+    id: "strawberry-farms",
+    name: "Authentic Strawberry Farms",
+    tagline: "Sweet Sahyadri Harvest",
+    description: "Vibrant hillside plantations yielding Maharashtra's freshest red strawberries.",
+    image: "/images/mahabaleshwar/3-strawberry-farms.jpg",
+    location: "Strawberry Plantations, Mahabaleshwar",
+  },
+  {
+    id: "lingmala-waterfall",
+    name: "Lingmala Waterfall",
+    tagline: "Cascading Forest Wonder",
+    description: "Majestic tiered waterfall plunging into deep subtropical rainforest gorges.",
+    image: "/images/mahabaleshwar/4-lingmala-waterfall.jpg",
+    location: "Lingmala Falls, Mahabaleshwar",
+  },
+  {
+    id: "elephants-head-point",
+    name: "Elephant's Head Point",
+    tagline: "Needle Hole Rock Formation",
+    description: "Famous natural overhanging rock cliff resembling an elephant's head & trunk.",
+    image: "/images/mahabaleshwar/5-elephants-head-point.jpg",
+    location: "Needle Hole Point, Mahabaleshwar",
+  },
+  {
+    id: "arthurs-seat-point",
+    name: "Arthur's Seat Point",
+    tagline: "Queen of All Sahyadri Points",
+    description: "Dramatic cliff precipice offering jaw-dropping views of the Savitri river valley.",
+    image: "/images/mahabaleshwar/6-arthurs-seat-point.jpg",
+    location: "Arthur's Seat, Mahabaleshwar",
+  },
+  {
+    id: "wilson-point",
+    name: "Wilson Point (Sunrise Point)",
+    tagline: "Highest Peak in Mahabaleshwar",
+    description: "Spectacular 360-degree sunrise and sunset panoramas at 1,439 meters elevation.",
+    image: "/images/mahabaleshwar/7-wilson-point.jpg",
+    location: "Highest Elevation (1,439m)",
+  },
+  {
+    id: "mahabaleshwar-temple",
+    name: "Ancient Mahabaleshwar Temple",
+    tagline: "16th-Century Sacred Heritage",
+    description: "Revered Hemadpanthi stone shrine dedicated to Lord Shiva in Old Mahabaleshwar.",
+    image: "/images/mahabaleshwar/8-mahabaleshwar-temple.jpg",
+    location: "Old Mahabaleshwar",
+  },
+  {
+    id: "mapro-garden",
+    name: "Mapro Garden",
+    tagline: "Strawberry Delights & Cafe",
+    description: "Lush botanical gardens, famous strawberry sundaes, and gourmet country treats.",
+    image: "/images/mahabaleshwar/9-mapro-garden.jpg",
+    location: "Gureghar, Panchgani-Mahabaleshwar",
+  },
+  {
+    id: "kates-point",
+    name: "Kate's Point (Echo Point)",
+    tagline: "Dhom Dam & Krishna Valley",
+    description: "Magnificent vantage point towering over the turquoise waters of Dhom reservoir.",
+    image: "/images/mahabaleshwar/10-kates-point.jpg",
+    location: "Kate's Point, Mahabaleshwar",
+  },
+  {
+    id: "pratapgad-fort",
+    name: "Pratapgad Fort",
+    tagline: "Historic Mountain Citadel",
+    description: "Commanding hilltop stone fortifications steeped in heroic Maratha heritage.",
+    image: "/images/mahabaleshwar/11-pratapgad-fort.jpg",
+    location: "Poladpur Ghat, Mahabaleshwar",
+  },
+];
