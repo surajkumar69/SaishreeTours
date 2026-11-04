@@ -9,7 +9,7 @@ import { COMMON_IMAGES } from "@/lib/images";
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-[95vh] flex flex-col items-center justify-between pt-10 sm:pt-14 pb-12 sm:pb-16 overflow-hidden bg-[#10141c]">
+    <section id="hero" className="relative min-h-[95vh] flex flex-col items-center justify-between pt-6 sm:pt-14 pb-12 sm:pb-16 overflow-hidden bg-[#10141c]">
       {/* City Highway Traffic Background (Matching reference) */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -25,14 +25,14 @@ export default function Hero() {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center flex-1 flex flex-col items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 w-full text-center flex-1 flex flex-col items-center">
         {/* Main Headline (Exact match for the typography and uppercase bold layout in reference) */}
-        <div className="max-w-4xl mx-auto space-y-2 sm:space-y-3 mb-6 sm:mb-8">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.08] uppercase drop-shadow-xl">
+        <div className="max-w-4xl mx-auto space-y-1.5 sm:space-y-3 mb-4 sm:mb-8">
+          <h1 className="text-2xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.08] uppercase drop-shadow-xl">
             Book Your Comfortable &amp; <br className="hidden sm:inline" />
             Hassle-Free Ride
           </h1>
-          <p className="text-xs sm:text-sm md:text-base font-extrabold uppercase tracking-[0.2em] text-gray-200 drop-shadow-md">
+          <p className="text-[11px] sm:text-sm md:text-base font-extrabold uppercase tracking-[0.2em] text-gray-200 drop-shadow-md">
             In Pune, Mumbai &amp; Outstation in Seconds!
           </p>
         </div>
