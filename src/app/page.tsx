@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
 import Fleet from "@/components/Fleet";
+import LandmarkFinder from "@/components/LandmarkFinder";
 import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Destinations from "@/components/Destinations";
@@ -14,44 +15,47 @@ import MobileStickyBar from "@/components/MobileStickyBar";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#0b0d10] text-white flex flex-col selection:bg-[#d4a843] selection:text-black">
-      {/* Top Header */}
+    <div className="min-h-screen bg-white text-gray-900 flex flex-col selection:bg-[#a0cc28] selection:text-black">
+      {/* 1. Header with Saishree Tours Logo, Navigation, Dual Phones, and Corner Ribbon */}
       <Header />
 
-      {/* Main Content */}
+      {/* Main Page Content */}
       <main className="flex-1">
-        {/* 1. Hero Section with Careem-inspired Booking Experience */}
+        {/* 2. Hero Section: Headline, Curved Highway Road, and Map-Pin Booking Form */}
         <Hero />
 
-        {/* 2. How It Works - 4 Step Booking Journey */}
+        {/* 3. How It Works: Smartphone App Mockup (NOW/LATER) & Skyline Road Network */}
         <HowItWorks />
 
-        {/* 3. Our Fleet - 11 Premium Vehicles */}
+        {/* 4. The Fleet: Featured 5-Vehicle Archetypes & Full 11-Vehicle Detailed Browser */}
         <Fleet />
 
-        {/* 4. Our Services - 20 Comprehensive Travel Services */}
+        {/* 5. Landmark Finder: "Find your nearest Saishree Tours Cab" Night Street Banner */}
+        <LandmarkFinder />
+
+        {/* 6. Our Services: Complete 20 Travel Services (Preserved 100%) */}
         <Services />
 
-        {/* 5. Why Choose Us - Value Proposition & Statistics */}
-        <WhyChooseUs />
-
-        {/* 6. Popular Destinations Gallery */}
+        {/* 7. Tour Packages & Destinations: 8 Popular Getaways from Pune */}
         <Destinations />
 
-        {/* 7. About Saishree Tours */}
+        {/* 8. The Saishree Promise: 7 Value Propositions & Trust Guarantees */}
+        <WhyChooseUs />
+
+        {/* 9. About Saishree Tours: Story, Chauffeur Quality & New Sangvi Base */}
         <AboutUs />
 
-        {/* 8. Contact Section with Direct Form & Coordinates */}
+        {/* 10. Contact Section: Direct Coordinates, Dual Phone Helplines & Google Map */}
         <Contact />
       </main>
 
-      {/* Footer */}
+      {/* 11. Footer: App Badges, Centered Links, Social Icons & Business Coordinates */}
       <Footer />
 
-      {/* Floating 24/7 WhatsApp & Quick Call Pill */}
+      {/* 12. Floating 24/7 WhatsApp & Calling Desks */}
       <FloatingWhatsApp />
 
-      {/* Sticky Mobile Bottom Booking Bar */}
+      {/* 13. Mobile Bottom Sticky Bar (Both Mandatory Contact Numbers Always Accessible) */}
       <MobileStickyBar />
     </div>
   );

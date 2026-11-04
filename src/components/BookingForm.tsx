@@ -1,24 +1,26 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import {
   MapPin,
   Calendar,
   Clock,
   Car,
   Users,
-  ArrowRightLeft,
-  MessageCircle,
-  ShieldCheck,
-  Check,
   Navigation,
-  Info,
   AlertCircle,
+  Sparkles,
+  ChevronDown,
+  Info,
 } from "lucide-react";
 import { getWhatsAppBookingUrl } from "@/lib/whatsapp";
 import { FLEET_DATA } from "@/lib/constants";
 
 export default function BookingForm() {
+  // Booking Timing: "Now" vs "Later" (Exact match for reference)
+  const [timing, setTiming] = useState<"Now" | "Later">("Now");
+  // Trip type: One Way, Round Trip, Local Rental
   const [tripType, setTripType] = useState<"One Way" | "Round Trip" | "Local Rental">("One Way");
   const [pickupLocation, setPickupLocation] = useState("");
   const [dropLocation, setDropLocation] = useState("");
@@ -29,27 +31,31 @@ export default function BookingForm() {
   const [passengers, setPassengers] = useState("4");
   const [localPackage, setLocalPackage] = useState("8 Hours / 80 km (Full Day)");
   const [minDate, setMinDate] = useState<string>("");
+  const [showAdvanced, setShowAdvanced] = useState(false);
   const [validationError, setValidationError] = useState<string | null>(null);
 
   useEffect(() => {
-    setMinDate(new Date().toISOString().split("T")[0]);
-  }, []);
+    const today = new Date().toISOString().split("T")[0];
+    setMinDate(today);
+    if (!pickupDate) {
+      setPickupDate(today);
+    }
+  }, [pickupDate]);
 
-  const handleBookNow = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleBookNow = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
 
-    // Validation checks
     if (!pickupLocation.trim()) {
-      setValidationError("Please enter your pickup location in Pune or airport.");
+      setValidationError("Please enter your pickup location.");
       return;
     }
 
     if (tripType !== "Local Rental" && !dropLocation.trim()) {
-      setValidationError("Please enter your drop destination (e.g. Mumbai, Shirdi, Lonavala).");
+      setValidationError("Please enter your dropoff address or destination.");
       return;
     }
 
-    if (!pickupDate) {
+    if (timing === "Later" && !pickupDate) {
       setValidationError("Please select your travel date.");
       return;
     }
@@ -64,13 +70,17 @@ export default function BookingForm() {
     const url = getWhatsAppBookingUrl({
       tripType,
       pickupLocation: pickupLocation.trim(),
-      dropLocation: tripType === "Local Rental" ? (dropLocation.trim() || "Within Pune / PCMC City") : dropLocation.trim(),
-      pickupDate,
+      dropLocation:
+        tripType === "Local Rental"
+          ? dropLocation.trim() || "Within Pune / PCMC City"
+          : dropLocation.trim(),
+      pickupDate: timing === "Now" ? "Today (Immediate / ASAP)" : pickupDate,
       returnDate: tripType === "Round Trip" ? returnDate : undefined,
-      pickupTime: pickupTime || "As scheduled",
+      pickupTime: timing === "Now" ? "Immediate Pickup (ASAP)" : pickupTime || "Scheduled",
       vehicle: selectedVehicle,
       passengers,
       localPackage: tripType === "Local Rental" ? localPackage : undefined,
+      customMessage: timing === "Now" ? "Urgent/Immediate pickup requested" : undefined,
     });
 
     window.open(url, "_blank", "noopener,noreferrer");
@@ -84,30 +94,46 @@ export default function BookingForm() {
   ];
 
   return (
-    <div id="booking-form" className="w-full max-w-xl mx-auto lg:max-w-none scroll-mt-24">
-      <div className="bg-[#12161f]/95 backdrop-blur-xl border border-gray-700/60 rounded-3xl p-5 sm:p-7 shadow-2xl relative overflow-hidden">
-        {/* Subtle decorative gold gradient top border */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#d4a843] via-[#ff4d4d] to-[#d4a843]" />
-
-        {/* Form Title & Trip Type Tabs */}
-        <div className="mb-6">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#d4a843] bg-[#d4a843]/10 px-2.5 py-1 rounded-full border border-[#d4a843]/20">
-                Instant Fare Estimate & Availability
-              </span>
-              <h3 className="text-xl sm:text-2xl font-extrabold text-white mt-1.5">
-                Book Your Ride
-              </h3>
-            </div>
-            <div className="hidden sm:flex items-center gap-1.5 text-xs text-emerald-400 font-medium">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              Available 24/7 in Pune
-            </div>
+    <div id="booking-form" className="w-full max-w-md sm:max-w-lg mx-auto relative z-20 pt-4 pb-20 sm:pb-24">
+      {/* Map Pin Teardrop Container (Matching the reference design blueprint) */}
+      <div className="relative">
+        {/* Main Map Pin Dark Charcoal Rounded Body */}
+        <div className="bg-[#212631] text-white rounded-[42px] sm:rounded-[52px] p-6 sm:p-8 pt-7 sm:pt-9 shadow-2xl border border-white/10 relative z-20">
+          {/* NOW / LATER Toggle Buttons (Exact match for reference design) */}
+          <div className="flex items-center justify-center gap-1 max-w-[240px] mx-auto bg-[#13171e] p-1 rounded-full border border-gray-700/60 mb-5">
+            <button
+              type="button"
+              onClick={() => {
+                setTiming("Now");
+                setValidationError(null);
+              }}
+              className={`flex-1 py-2 px-5 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-200 ${
+                timing === "Now"
+                  ? "bg-[#a0cc28] text-black shadow-md scale-102"
+                  : "text-gray-300 hover:text-white"
+              }`}
+            >
+              Now
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setTiming("Later");
+                setShowAdvanced(true);
+                setValidationError(null);
+              }}
+              className={`flex-1 py-2 px-5 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-200 ${
+                timing === "Later"
+                  ? "bg-[#a0cc28] text-black shadow-md scale-102"
+                  : "text-gray-300 hover:text-white"
+              }`}
+            >
+              Later
+            </button>
           </div>
 
-          {/* Trip Type Selector */}
-          <div className="grid grid-cols-3 gap-1.5 bg-[#0a0c10] p-1.5 rounded-2xl border border-gray-800">
+          {/* Trip Type Pills: One Way | Round Trip | Local Rental */}
+          <div className="flex items-center justify-center gap-1.5 mb-4">
             {(["One Way", "Round Trip", "Local Rental"] as const).map((type) => (
               <button
                 key={type}
@@ -116,289 +142,243 @@ export default function BookingForm() {
                   setTripType(type);
                   setValidationError(null);
                 }}
-                className={`py-2 px-2 text-xs sm:text-sm font-semibold rounded-xl transition-all duration-200 text-center ${
+                className={`text-[11px] font-bold py-1 px-3 rounded-full transition-all ${
                   tripType === type
-                    ? "bg-[#d4a843] text-black shadow-md font-bold"
-                    : "text-gray-400 hover:text-white hover:bg-gray-800/60"
+                    ? "bg-white/20 text-white border border-[#a0cc28]/60"
+                    : "text-gray-400 hover:text-white hover:bg-white/5"
                 }`}
               >
                 {type}
               </button>
             ))}
           </div>
-        </div>
 
-        {/* Validation Error Banner */}
-        {validationError && (
-          <div className="mb-4 p-3 rounded-2xl bg-rose-950/60 border border-rose-800 text-rose-200 text-xs flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
-            <span>{validationError}</span>
-          </div>
-        )}
+          {/* Validation Error Alert */}
+          {validationError && (
+            <div className="mb-4 p-2.5 rounded-xl bg-rose-950/80 border border-rose-700 text-rose-200 text-xs flex items-center gap-2">
+              <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+              <span>{validationError}</span>
+            </div>
+          )}
 
-        {/* Booking Form Fields */}
-        <form onSubmit={handleBookNow} className="space-y-4">
-          {/* Pickup & Drop Locations */}
+          {/* Address Inputs (White Rounded Text Boxes Matching Reference) */}
           <div className="space-y-3">
-            {/* Pickup */}
+            {/* Pickup Address */}
             <div className="relative">
-              <label className="block text-xs font-medium text-gray-300 mb-1">
-                Pickup Location <span className="text-rose-400">*</span>
-              </label>
-              <div className="relative flex items-center">
-                <div className="absolute left-3.5 text-emerald-400">
-                  <Navigation className="w-4 h-4" />
-                </div>
-                <input
-                  type="text"
-                  required
-                  value={pickupLocation}
-                  onChange={(e) => {
-                    setPickupLocation(e.target.value);
-                    if (validationError) setValidationError(null);
-                  }}
-                  placeholder="Enter pickup address, Pune area, or airport..."
-                  className="w-full pl-10 pr-4 py-3 bg-[#090b0e] border border-gray-700/80 rounded-2xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] transition-all"
-                />
+              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#a0cc28]">
+                <Navigation className="w-4 h-4" />
               </div>
+              <input
+                type="text"
+                value={pickupLocation}
+                onChange={(e) => {
+                  setPickupLocation(e.target.value);
+                  if (validationError) setValidationError(null);
+                }}
+                placeholder="Pickup Address (Pune area or airport)"
+                className="w-full pl-10 pr-4 py-3 bg-white text-gray-900 placeholder-gray-500 rounded-2xl text-xs sm:text-sm font-medium border-2 border-transparent focus:border-[#a0cc28] focus:outline-none shadow-inner transition-all"
+              />
             </div>
 
-            {/* Drop Location / Local Package */}
+            {/* Dropoff Address or Local Package */}
             {tripType === "Local Rental" ? (
-              <div className="space-y-3">
-                <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1">
-                    Local Hourly Package
-                  </label>
-                  <select
-                    value={localPackage}
-                    onChange={(e) => setLocalPackage(e.target.value)}
-                    className="w-full px-4 py-3 bg-[#090b0e] border border-gray-700/80 rounded-2xl text-sm text-white focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] transition-all cursor-pointer"
-                  >
-                    <option value="4 Hours / 40 km (Half Day)">4 Hours / 40 km (Half Day City)</option>
-                    <option value="8 Hours / 80 km (Full Day)">8 Hours / 80 km (Full Day City)</option>
-                    <option value="12 Hours / 120 km (Extended)">12 Hours / 120 km (Extended City & PCMC)</option>
-                  </select>
-                </div>
+              <div className="space-y-2">
+                <select
+                  value={localPackage}
+                  onChange={(e) => setLocalPackage(e.target.value)}
+                  className="w-full px-4 py-3 bg-white text-gray-900 rounded-2xl text-xs sm:text-sm font-medium border-2 border-transparent focus:border-[#a0cc28] focus:outline-none shadow-inner"
+                >
+                  <option value="4 Hours / 40 km (Half Day)">4 Hours / 40 km (Half Day City)</option>
+                  <option value="8 Hours / 80 km (Full Day)">8 Hours / 80 km (Full Day City)</option>
+                  <option value="12 Hours / 120 km (Extended)">12 Hours / 120 km (Full Day & PCMC)</option>
+                </select>
                 <div className="relative">
-                  <label className="block text-xs font-medium text-gray-300 mb-1">
-                    Coverage Area / Key Stops (Optional)
-                  </label>
-                  <div className="relative flex items-center">
-                    <div className="absolute left-3.5 text-rose-500">
-                      <MapPin className="w-4 h-4" />
-                    </div>
-                    <input
-                      type="text"
-                      value={dropLocation}
-                      onChange={(e) => setDropLocation(e.target.value)}
-                      placeholder="e.g. Hinjawadi, Koregaon Park, Swargate..."
-                      className="w-full pl-10 pr-4 py-3 bg-[#090b0e] border border-gray-700/80 rounded-2xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] transition-all"
-                    />
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="relative">
-                <label className="block text-xs font-medium text-gray-300 mb-1">
-                  Drop Destination <span className="text-rose-400">*</span>
-                </label>
-                <div className="relative flex items-center">
-                  <div className="absolute left-3.5 text-rose-500">
+                  <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-rose-500">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <input
                     type="text"
-                    required
                     value={dropLocation}
-                    onChange={(e) => {
-                      setDropLocation(e.target.value);
-                      if (validationError) setValidationError(null);
-                    }}
-                    placeholder="Enter drop city (e.g. Mumbai, Lonavala, Shirdi, Goa)..."
-                    className="w-full pl-10 pr-4 py-3 bg-[#090b0e] border border-gray-700/80 rounded-2xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] transition-all"
+                    onChange={(e) => setDropLocation(e.target.value)}
+                    placeholder="Specific Pune Area / Stops (Optional)"
+                    className="w-full pl-10 pr-4 py-3 bg-white text-gray-900 placeholder-gray-500 rounded-2xl text-xs sm:text-sm font-medium border-2 border-transparent focus:border-[#a0cc28] focus:outline-none shadow-inner"
                   />
                 </div>
               </div>
-            )}
-          </div>
-
-          {/* Quick Popular Route Pills */}
-          {tripType !== "Local Rental" && (
-            <div className="pt-0.5">
-              <span className="text-[11px] text-gray-400 mr-2">Popular:</span>
-              <div className="inline-flex flex-wrap gap-1.5 mt-1">
-                {quickPopularRoutes.map((route) => (
-                  <button
-                    key={`${route.from}-${route.to}`}
-                    type="button"
-                    onClick={() => {
-                      setPickupLocation(route.from);
-                      setDropLocation(route.to);
-                      if (validationError) setValidationError(null);
-                    }}
-                    className="text-[11px] px-2.5 py-1 rounded-full bg-gray-800/80 text-gray-300 hover:text-[#d4a843] hover:bg-gray-700/80 border border-gray-700/60 transition-colors"
-                  >
-                    {route.to}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Date & Time Row */}
-          <div className={`grid ${tripType === "Round Trip" ? "grid-cols-1 sm:grid-cols-3" : "grid-cols-1 sm:grid-cols-2"} gap-3 pt-1`}>
-            <div>
-              <label className="block text-xs font-medium text-gray-300 mb-1">
-                Pickup Date <span className="text-rose-400">*</span>
-              </label>
-              <div className="relative flex items-center">
-                <div className="absolute left-3.5 text-gray-400">
-                  <Calendar className="w-4 h-4" />
+            ) : (
+              <div className="relative">
+                <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-rose-500">
+                  <MapPin className="w-4 h-4" />
                 </div>
                 <input
-                  type="date"
-                  required
-                  min={minDate || undefined}
-                  value={pickupDate}
+                  type="text"
+                  value={dropLocation}
                   onChange={(e) => {
-                    setPickupDate(e.target.value);
+                    setDropLocation(e.target.value);
                     if (validationError) setValidationError(null);
                   }}
-                  className="w-full pl-10 pr-4 py-2.5 bg-[#090b0e] border border-gray-700/80 rounded-2xl text-xs sm:text-sm text-white focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] transition-all"
+                  placeholder="Dropoff Address (e.g. Mumbai, Shirdi, Lonavala)"
+                  className="w-full pl-10 pr-4 py-3 bg-white text-gray-900 placeholder-gray-500 rounded-2xl text-xs sm:text-sm font-medium border-2 border-transparent focus:border-[#a0cc28] focus:outline-none shadow-inner transition-all"
                 />
               </div>
-            </div>
+            )}
+          </div>
 
-            {tripType === "Round Trip" && (
-              <div>
-                <label className="block text-xs font-medium text-gray-300 mb-1">
-                  Return Date
-                </label>
-                <div className="relative flex items-center">
-                  <div className="absolute left-3.5 text-gray-400">
-                    <Calendar className="w-4 h-4" />
+          {/* Collapsible / Optional Date, Time, Vehicle selectors (Auto-expanded when 'Later') */}
+          <div className="mt-3">
+            <button
+              type="button"
+              onClick={() => setShowAdvanced(!showAdvanced)}
+              className="flex items-center justify-between w-full py-1.5 px-3 text-[11px] font-semibold text-gray-400 hover:text-[#a0cc28] transition-colors"
+            >
+              <span>{showAdvanced ? "Hide ride preferences" : "+ Choose date, vehicle & passengers"}</span>
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showAdvanced ? "rotate-180" : ""}`} />
+            </button>
+
+            {(showAdvanced || timing === "Later") && (
+              <div className="mt-2.5 p-3 rounded-2xl bg-[#141822] border border-gray-700/60 space-y-2.5 text-xs">
+                {/* Date / Time */}
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <label className="block text-[10px] text-gray-400 mb-1">Pickup Date</label>
+                    <div className="relative flex items-center">
+                      <Calendar className="absolute left-2.5 w-3.5 h-3.5 text-gray-400" />
+                      <input
+                        type="date"
+                        min={minDate || undefined}
+                        value={pickupDate}
+                        onChange={(e) => setPickupDate(e.target.value)}
+                        className="w-full pl-8 pr-2 py-2 bg-gray-900 border border-gray-700 rounded-xl text-white text-xs focus:outline-none focus:border-[#a0cc28]"
+                      />
+                    </div>
                   </div>
-                  <input
-                    type="date"
-                    min={pickupDate || minDate || undefined}
-                    value={returnDate}
-                    onChange={(e) => setReturnDate(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 bg-[#090b0e] border border-gray-700/80 rounded-2xl text-xs sm:text-sm text-white focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] transition-all"
-                  />
+
+                  <div>
+                    <label className="block text-[10px] text-gray-400 mb-1">Pickup Time</label>
+                    <div className="relative flex items-center">
+                      <Clock className="absolute left-2.5 w-3.5 h-3.5 text-gray-400" />
+                      <input
+                        type="time"
+                        value={pickupTime}
+                        onChange={(e) => setPickupTime(e.target.value)}
+                        className="w-full pl-8 pr-2 py-2 bg-gray-900 border border-gray-700 rounded-xl text-white text-xs focus:outline-none focus:border-[#a0cc28]"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {tripType === "Round Trip" && (
+                  <div>
+                    <label className="block text-[10px] text-gray-400 mb-1">Return Date</label>
+                    <div className="relative flex items-center">
+                      <Calendar className="absolute left-2.5 w-3.5 h-3.5 text-gray-400" />
+                      <input
+                        type="date"
+                        min={pickupDate || minDate || undefined}
+                        value={returnDate}
+                        onChange={(e) => setReturnDate(e.target.value)}
+                        className="w-full pl-8 pr-2 py-2 bg-gray-900 border border-gray-700 rounded-xl text-white text-xs focus:outline-none focus:border-[#a0cc28]"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Vehicle & Passengers */}
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <label className="block text-[10px] text-gray-400 mb-1">Select Vehicle</label>
+                    <div className="relative flex items-center">
+                      <Car className="absolute left-2.5 w-3.5 h-3.5 text-[#a0cc28]" />
+                      <select
+                        value={selectedVehicle}
+                        onChange={(e) => setSelectedVehicle(e.target.value)}
+                        className="w-full pl-8 pr-2 py-2 bg-gray-900 border border-gray-700 rounded-xl text-white text-xs focus:outline-none focus:border-[#a0cc28] appearance-none"
+                      >
+                        {FLEET_DATA.map((v) => (
+                          <option key={v.id} value={v.name}>
+                            {v.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-[10px] text-gray-400 mb-1">Passengers</label>
+                    <div className="relative flex items-center">
+                      <Users className="absolute left-2.5 w-3.5 h-3.5 text-gray-400" />
+                      <select
+                        value={passengers}
+                        onChange={(e) => setPassengers(e.target.value)}
+                        className="w-full pl-8 pr-2 py-2 bg-gray-900 border border-gray-700 rounded-xl text-white text-xs focus:outline-none focus:border-[#a0cc28] appearance-none"
+                      >
+                        <option value="1-2">1 - 2 (Sedan)</option>
+                        <option value="3-4">3 - 4 (Sedan/Ertiga)</option>
+                        <option value="5-7">5 - 7 (Innova Crysta)</option>
+                        <option value="8-17">8 - 17 (Tempo Traveller)</option>
+                        <option value="18+">18+ (Luxury Bus)</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
-
-            <div>
-              <label className="block text-xs font-medium text-gray-300 mb-1">
-                Pickup Time
-              </label>
-              <div className="relative flex items-center">
-                <div className="absolute left-3.5 text-gray-400">
-                  <Clock className="w-4 h-4" />
-                </div>
-                <input
-                  type="time"
-                  value={pickupTime}
-                  onChange={(e) => setPickupTime(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 bg-[#090b0e] border border-gray-700/80 rounded-2xl text-xs sm:text-sm text-white focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] transition-all"
-                />
-              </div>
-            </div>
           </div>
 
-          {/* Vehicle & Passengers Row */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-            <div>
-              <label className="block text-xs font-medium text-gray-300 mb-1">
-                Vehicle Selection
-              </label>
-              <div className="relative flex items-center">
-                <div className="absolute left-3.5 text-[#d4a843]">
-                  <Car className="w-4 h-4" />
-                </div>
-                <select
-                  value={selectedVehicle}
-                  onChange={(e) => setSelectedVehicle(e.target.value)}
-                  className="w-full pl-10 pr-8 py-2.5 bg-[#090b0e] border border-gray-700/80 rounded-2xl text-xs sm:text-sm text-white focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] transition-all appearance-none cursor-pointer"
-                >
-                  {FLEET_DATA.map((v) => (
-                    <option key={v.id} value={v.name} className="bg-[#11141b] text-white">
-                      {v.name} ({v.capacity})
-                    </option>
-                  ))}
-                </select>
-                <div className="pointer-events-none absolute right-3 text-gray-400">
-                  ▼
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-medium text-gray-300 mb-1">
-                Passengers
-              </label>
-              <div className="relative flex items-center">
-                <div className="absolute left-3.5 text-gray-400">
-                  <Users className="w-4 h-4" />
-                </div>
-                <select
-                  value={passengers}
-                  onChange={(e) => setPassengers(e.target.value)}
-                  className="w-full pl-10 pr-8 py-2.5 bg-[#090b0e] border border-gray-700/80 rounded-2xl text-xs sm:text-sm text-white focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] transition-all appearance-none cursor-pointer"
-                >
-                  <option value="1-2" className="bg-[#11141b]">1 - 2 Passengers (Sedan)</option>
-                  <option value="3-4" className="bg-[#11141b]">3 - 4 Passengers (Sedan / Ertiga)</option>
-                  <option value="5-7" className="bg-[#11141b]">5 - 7 Passengers (Innova Crysta / SUV)</option>
-                  <option value="8-12" className="bg-[#11141b]">8 - 12 Passengers (Tempo / Maxi)</option>
-                  <option value="13-17" className="bg-[#11141b]">13 - 17 Passengers (17 Seater Tempo)</option>
-                  <option value="18-32" className="bg-[#11141b]">18 - 32 Passengers (Mini Bus)</option>
-                  <option value="33+" className="bg-[#11141b]">33+ Passengers (Luxury Coach)</option>
-                </select>
-                <div className="pointer-events-none absolute right-3 text-gray-400">
-                  ▼
-                </div>
-              </div>
+          {/* Yellow 3D Car Graphic (Positioned resting on lower curve of pin like reference) */}
+          <div className="relative -mb-6 mt-4 w-full h-24 sm:h-28 flex items-center justify-center pointer-events-none">
+            <div className="relative w-56 sm:w-64 h-24 sm:h-28">
+              <Image
+                src="/images/pin-car.svg"
+                alt="Saishree Tours Yellow Cab"
+                fill
+                priority
+                className="object-contain filter drop-shadow-lg"
+              />
             </div>
           </div>
+        </div>
 
-          {/* Transparent Pricing Disclaimer Card */}
-          <div className="p-3 rounded-2xl bg-[#090b0e] border border-gray-800 text-[11px] text-gray-400 space-y-1">
-            <div className="flex items-center gap-1.5 text-gray-300 font-semibold">
-              <Info className="w-3.5 h-3.5 text-[#d4a843] shrink-0" />
-              <span>Transparent Fare Policy</span>
-            </div>
-            <p className="text-[11px] leading-relaxed text-gray-400">
-              Quotes include base fare & fuel. Highway tolls, state border taxes, airport parking, and driver night allowance (after 10 PM) are itemized upfront. Zero surprise extras.
-            </p>
-          </div>
+        {/* The Bottom Point of the Map Pin */}
+        <div className="map-pin-pointer" />
 
-          {/* Submit Button */}
-          <div className="pt-1">
+        {/* FARE ESTIMATE Circular Lime Green Badge Button (Exact match for reference) */}
+        <div className="absolute -bottom-10 sm:-bottom-12 left-1/2 -translate-x-1/2 z-30">
+          <button
+            type="button"
+            onClick={() => handleBookNow()}
+            className="fare-estimate-btn w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center text-center p-2 cursor-pointer transition-transform active:scale-95"
+            title="Get Instant Fare Estimate & Book on WhatsApp"
+          >
+            <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider leading-tight text-gray-950">
+              FARE
+            </span>
+            <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider leading-tight text-gray-950">
+              ESTIMATE
+            </span>
+          </button>
+        </div>
+      </div>
+
+      {/* Quick popular route pill badges */}
+      <div className="mt-14 sm:mt-16 text-center">
+        <div className="inline-flex flex-wrap items-center justify-center gap-1.5 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+          <span className="text-[11px] text-gray-300 font-bold mr-1">Popular:</span>
+          {quickPopularRoutes.map((route) => (
             <button
-              type="submit"
-              className="w-full flex items-center justify-center gap-2.5 py-4 px-6 rounded-2xl text-base font-extrabold text-white bg-gradient-to-r from-[#25D366] via-[#20be5b] to-[#128C7E] hover:from-[#20bd5a] hover:to-[#0f7a6e] shadow-xl shadow-emerald-950/50 hover:shadow-emerald-900/60 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+              key={`${route.from}-${route.to}`}
+              type="button"
+              onClick={() => {
+                setPickupLocation(route.from);
+                setDropLocation(route.to);
+                setValidationError(null);
+              }}
+              className="text-[11px] px-2.5 py-0.5 rounded-full bg-white/15 hover:bg-[#a0cc28] text-white hover:text-black font-semibold transition-colors"
             >
-              <MessageCircle className="w-5 h-5 fill-white" />
-              <span>Confirm & Book on WhatsApp</span>
+              {route.to}
             </button>
-
-            <div className="flex items-center justify-center gap-3 sm:gap-4 mt-3 text-[11px] text-gray-400">
-              <span className="flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#d4a843]" />
-                Zero Advance Booking Fee
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <Check className="w-3.5 h-3.5 text-emerald-400" />
-                Prompt Scheduled Pickup
-              </span>
-              <span>•</span>
-              <span>Direct WhatsApp Help</span>
-            </div>
-          </div>
-        </form>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -8,7 +8,6 @@ import {
   Clock,
   MessageCircle,
   Send,
-  Sparkles,
   Building,
   CheckCircle,
 } from "lucide-react";
@@ -35,140 +34,158 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-[#0d1017] border-t border-gray-800/60 relative">
+    <section id="contact" className="py-20 sm:py-24 bg-white text-gray-900 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#d4a843]/10 border border-[#d4a843]/20 text-[#d4a843] text-xs font-bold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
-            Get In Touch
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <span className="w-10 h-px bg-gray-300" />
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#a0cc28]">
+              GET IN TOUCH
+            </span>
+            <span className="w-10 h-px bg-gray-300" />
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-wide text-gray-900">
             Contact Saishree Tours
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base mt-3 leading-relaxed">
+          <p className="text-sm sm:text-base text-gray-600 mt-2 font-normal leading-relaxed">
             Have questions about fares, custom tour packages, or bus charter?
             Our friendly Pune team is available 24/7 to assist you.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Left Column: Direct Contact Info & Address */}
+          {/* Left Column: Office Coordinates & BOTH Mandatory Phone Numbers */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-[#12161f] border border-gray-800 rounded-3xl p-6 sm:p-8 space-y-6">
-              <h3 className="text-xl font-bold text-white">
-                Office Information
+            <div className="bg-[#f8f9fb] border border-gray-200 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xs">
+              <h3 className="text-lg font-bold text-gray-900 border-b border-gray-200 pb-3">
+                Head Office Information
               </h3>
 
-              <div className="space-y-4">
-                {/* Number 1: Booking / WhatsApp Hotline */}
-                <a
-                  href={`tel:${BUSINESS_INFO.phoneRaw}`}
-                  className="flex items-start gap-4 p-4 rounded-2xl bg-[#0b0d10] border border-[#d4a843]/40 hover:border-[#d4a843] transition-all group shadow-md"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-[#d4a843]/20 text-[#d4a843] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                    <Phone className="w-6 h-6" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <div className="text-xs text-[#d4a843] font-bold uppercase tracking-wider">Booking & WhatsApp Number</div>
-                      <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 px-2 py-0.5 rounded-full">24/7 LIVE</span>
-                    </div>
-                    <div className="text-lg sm:text-xl font-black text-white group-hover:text-[#f3cf7a] transition-colors mt-0.5">
-                      {BUSINESS_INFO.phone}
-                    </div>
-                    <div className="text-xs text-gray-400 mt-0.5">
-                      Direct Cab Bookings, Fare Quotes & Instant WhatsApp Reservation
-                    </div>
-                  </div>
-                </a>
-
-                {/* Number 2: Office Calling Desk */}
-                <a
-                  href={`tel:${BUSINESS_INFO.officePhoneRaw}`}
-                  className="flex items-start gap-4 p-4 rounded-2xl bg-[#0b0d10] border border-blue-500/30 hover:border-blue-400 transition-all group shadow-md"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                    <Building className="w-6 h-6" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <div className="text-xs text-blue-400 font-bold uppercase tracking-wider">Office & Calling Number</div>
-                      <span className="text-[10px] font-semibold text-blue-300 bg-blue-950/60 border border-blue-800/80 px-2 py-0.5 rounded-full">OFFICE DESK</span>
-                    </div>
-                    <div className="text-lg sm:text-xl font-bold text-white group-hover:text-[#f3cf7a] transition-colors mt-0.5">
-                      {BUSINESS_INFO.officePhone}
-                    </div>
-                    <div className="text-xs text-gray-400 mt-0.5">
-                      Dispatch Office, Bus Charters, Corporate Accounts & Support
-                    </div>
-                  </div>
-                </a>
-
-                {/* Email */}
-                <a
-                  href={`mailto:${BUSINESS_INFO.email}`}
-                  className="flex items-start gap-4 p-4 rounded-2xl bg-[#0b0d10] border border-gray-800/80 hover:border-[#d4a843]/50 transition-all group"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-[#ff4d4d]/15 text-[#ff6b6b] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div className="overflow-hidden">
-                    <div className="text-xs text-gray-400">Email Inquiries</div>
-                    <div className="text-sm sm:text-base font-bold text-white group-hover:text-[#f3cf7a] transition-colors truncate">
-                      {BUSINESS_INFO.email}
-                    </div>
-                    <div className="text-[11px] text-gray-400 mt-0.5">
-                      Prompt Reply Within 2 Hours
-                    </div>
-                  </div>
-                </a>
-
-                {/* Physical Address */}
-                <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#0b0d10] border border-gray-800/80">
-                  <div className="w-11 h-11 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5" />
+              <div className="space-y-4 text-xs sm:text-sm">
+                {/* Booking Number */}
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-[#a0cc28]/20 flex items-center justify-center text-[#6e9418] shrink-0">
+                    <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-xs text-gray-400">Pune Location</div>
-                    <div className="text-sm font-bold text-white mt-0.5">
+                    <div className="text-[11px] text-gray-500 font-medium">Booking / WhatsApp (24/7)</div>
+                    <a
+                      href={`tel:${BUSINESS_INFO.phoneRaw}`}
+                      className="font-bold text-gray-900 hover:text-[#a0cc28] transition-colors"
+                    >
+                      {BUSINESS_INFO.phone}
+                    </a>
+                  </div>
+                </div>
+
+                {/* Office Number */}
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+                    <Building className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-gray-500 font-medium">Office Desk / Alternate Calling</div>
+                    <a
+                      href={`tel:${BUSINESS_INFO.officePhoneRaw}`}
+                      className="font-bold text-gray-900 hover:text-blue-600 transition-colors"
+                    >
+                      {BUSINESS_INFO.officePhone}
+                    </a>
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-gray-200 flex items-center justify-center text-gray-700 shrink-0">
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-gray-500 font-medium">Official Email</div>
+                    <a
+                      href={`mailto:${BUSINESS_INFO.email}`}
+                      className="font-bold text-gray-900 hover:text-[#a0cc28] transition-colors break-all"
+                    >
+                      {BUSINESS_INFO.email}
+                    </a>
+                  </div>
+                </div>
+
+                {/* Location */}
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-rose-100 flex items-center justify-center text-rose-600 shrink-0">
+                    <MapPin className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-gray-500 font-medium">Office Address</div>
+                    <p className="font-semibold text-gray-900 leading-snug">
                       {BUSINESS_INFO.address}
-                    </div>
-                    <div className="text-[11px] text-gray-400 mt-1">
-                      Serving Pune, Pimpri-Chinchwad, and Western Maharashtra
-                    </div>
+                    </p>
+                  </div>
+                </div>
+
+                {/* Working Hours */}
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 shrink-0">
+                    <Clock className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-gray-500 font-medium">Working Hours</div>
+                    <p className="font-bold text-emerald-700">
+                      {BUSINESS_INFO.workingHours}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Embedded Responsive Google Map of New Sangvi, Pune */}
+            <div className="rounded-3xl overflow-hidden border border-gray-200 shadow-xs h-56 w-full">
+              <iframe
+                title="Saishree Tours New Sangvi Pune Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15129.839611756586!2d73.8055452!3d18.5758839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b918fa0999ef%3A0x2da86bbcefc4723c!2sNew%20Sangavi%2C%20Pimpri-Chinchwad%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
 
-          {/* Right Column: Contact & Quick Inquiry Form */}
-          <div className="lg:col-span-7">
-            <div className="bg-[#12161f] border border-gray-800 rounded-3xl p-6 sm:p-8 relative">
-              <div className="mb-6">
-                <h3 className="text-xl sm:text-2xl font-bold text-white">
-                  Send Us an Inquiry
-                </h3>
-                <p className="text-xs sm:text-sm text-gray-400 mt-1">
-                  Fill in your details to get an instant WhatsApp quote and itinerary suggestion.
+          {/* Right Column: Inquiry Form */}
+          <div className="lg:col-span-7 bg-[#f8f9fb] border border-gray-200 rounded-3xl p-6 sm:p-8 shadow-xs">
+            <h3 className="text-lg font-bold text-gray-900 mb-1">
+              Send an Inquiry
+            </h3>
+            <p className="text-xs text-gray-600 mb-6">
+              Fill out this quick form to send your travel requirements directly to our WhatsApp booking desk.
+            </p>
+
+            {submitted ? (
+              <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3">
+                <CheckCircle className="w-10 h-10 text-emerald-600 mx-auto" />
+                <h4 className="text-base font-bold text-emerald-900">
+                  Inquiry Transferred!
+                </h4>
+                <p className="text-xs text-emerald-700">
+                  Your message has been opened in WhatsApp. Our team will share the best available quotation within minutes.
                 </p>
+                <button
+                  type="button"
+                  onClick={() => setSubmitted(false)}
+                  className="px-4 py-2 text-xs font-bold text-black bg-[#a0cc28] rounded-xl hover:bg-[#8eb822]"
+                >
+                  Send Another Inquiry
+                </button>
               </div>
-
-              {submitted && (
-                <div className="mb-6 p-4 rounded-2xl bg-emerald-950/60 border border-emerald-700/80 text-emerald-300 text-xs sm:text-sm flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0" />
-                  <span>
-                    Thank you! Your message has been forwarded to our WhatsApp reservation desk. We will connect with you immediately.
-                  </span>
-                </div>
-              )}
-
+            ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                      Your Full Name
+                    <label className="block text-xs font-semibold text-gray-700 mb-1">
+                      Your Name <span className="text-rose-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -176,13 +193,13 @@ export default function Contact() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. Rahul Sharma"
-                      className="w-full px-4 py-3 bg-[#090b0e] border border-gray-700/80 rounded-2xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] transition-all"
+                      className="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-xl text-xs sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#a0cc28]"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                      Phone Number (WhatsApp)
+                    <label className="block text-xs font-semibold text-gray-700 mb-1">
+                      Phone Number <span className="text-rose-500">*</span>
                     </label>
                     <input
                       type="tel"
@@ -190,53 +207,53 @@ export default function Contact() {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="e.g. +91 98765 43210"
-                      className="w-full px-4 py-3 bg-[#090b0e] border border-gray-700/80 rounded-2xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] transition-all"
+                      className="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-xl text-xs sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#a0cc28]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Service Interested In
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">
+                    Service Required
                   </label>
                   <select
                     value={service}
                     onChange={(e) => setService(e.target.value)}
-                    className="w-full px-4 py-3 bg-[#090b0e] border border-gray-700/80 rounded-2xl text-sm text-white focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] transition-all cursor-pointer"
+                    className="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-xl text-xs sm:text-sm text-gray-900 focus:outline-none focus:border-[#a0cc28]"
                   >
-                    <option value="Pune to Mumbai Cab">Pune to Mumbai Cab (Expressway)</option>
-                    <option value="Outstation Taxi Booking">Outstation Taxi (Mahabaleshwar, Shirdi, Goa)</option>
-                    <option value="Local Pune Rental">Local Pune Rental (Hourly Cab)</option>
-                    <option value="Airport Pickup or Drop">Airport Pickup & Drop (Pune / BOM)</option>
+                    <option value="Pune to Mumbai Cab">Pune to Mumbai Cab</option>
+                    <option value="Airport Pickup / Drop">Airport Pickup / Drop (Pune / BOM)</option>
+                    <option value="Local Hourly Cab (4hr/8hr)">Local Hourly Cab (4hr / 8hr / 12hr)</option>
+                    <option value="Outstation Round Trip Taxi">Outstation Round Trip Taxi</option>
                     <option value="17 Seater Tempo Traveller">17 Seater Tempo Traveller</option>
-                    <option value="A/C Luxury Bus Booking">A/C Luxury Bus Booking (27, 32, 45+ Seater)</option>
-                    <option value="Holiday & Hotel Package">Holiday & Hotel Package</option>
-                    <option value="Wedding / Corporate Fleet">Wedding / Corporate Fleet</option>
+                    <option value="Luxury Bus Charter (27/32/45 Seater)">Luxury Bus Charter (27/32/45 Seater)</option>
+                    <option value="Tour Package (Shirdi / Mahabaleshwar / Goa)">Tour Package (Shirdi / Mahabaleshwar / Goa / Lonavala)</option>
+                    <option value="Corporate / Wedding Transport">Corporate / Wedding Transport</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1.5">
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">
                     Message / Travel Details
                   </label>
                   <textarea
                     rows={4}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Tell us about your journey (dates, number of travelers, pickup location, any special requests)..."
-                    className="w-full px-4 py-3 bg-[#090b0e] border border-gray-700/80 rounded-2xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] transition-all resize-none"
+                    placeholder="Enter travel dates, pickup location, passenger count, or specific vehicle preferences..."
+                    className="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-xl text-xs sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#a0cc28]"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2.5 py-4 px-6 rounded-2xl text-sm sm:text-base font-bold text-white bg-gradient-to-r from-[#25D366] via-[#20be5b] to-[#128C7E] hover:from-[#20bd5a] hover:to-[#0f7a6e] shadow-xl shadow-emerald-950/50 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl text-xs sm:text-sm font-bold text-white bg-[#25D366] hover:bg-[#20be5b] shadow-md transition-all active:scale-95"
                 >
-                  <MessageCircle className="w-5 h-5 fill-white" />
-                  <span>Send Inquiry to WhatsApp Desk</span>
+                  <MessageCircle className="w-4 h-4 fill-white" />
+                  <span>Submit Inquiry to WhatsApp</span>
                 </button>
               </form>
-            </div>
+            )}
           </div>
         </div>
       </div>

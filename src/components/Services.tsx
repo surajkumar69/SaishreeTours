@@ -24,12 +24,10 @@ import {
   Globe,
   Sliders,
   MessageCircle,
-  ChevronRight,
 } from "lucide-react";
 import { SERVICES_DATA, ServiceItem } from "@/lib/constants";
 import { getServiceWhatsAppUrl } from "@/lib/whatsapp";
 
-// Mapping string names to Lucide icons
 const iconMap: Record<string, React.ElementType> = {
   Car,
   Compass,
@@ -64,113 +62,119 @@ export default function Services() {
       : SERVICES_DATA.filter((s) => s.category === activeTab);
 
   return (
-    <section id="services" className="py-20 bg-[#0d1017] border-t border-gray-800/60 relative">
+    <section id="services" className="py-20 sm:py-24 bg-white text-gray-900 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#d4a843]/10 border border-[#d4a843]/20 text-[#d4a843] text-xs font-bold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
-            Comprehensive Travel Solutions
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <span className="w-10 h-px bg-gray-300" />
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#a0cc28]">
+              COMPLETE TRAVEL SOLUTIONS
+            </span>
+            <span className="w-10 h-px bg-gray-300" />
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-wide text-gray-900">
             Our Services
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base mt-3 leading-relaxed">
-            Everything you need for seamless mobility across Pune, Maharashtra, and All India.
-            20 dedicated travel services crafted with care and punctuality.
+          <p className="text-sm sm:text-base text-gray-600 mt-2 font-normal leading-relaxed">
+            From daily Pune-Mumbai express cabs and airport transfers to group Tempo Travellers,
+            multi-axle luxury tourist coaches, and customized holiday packages.
           </p>
 
-          {/* Filter Categories */}
+          {/* Category Tabs */}
           <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
-            {serviceCategories.map((tab) => (
+            {serviceCategories.map((cat) => (
               <button
-                key={tab}
+                key={cat}
                 type="button"
-                onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
-                  activeTab === tab
-                    ? "bg-[#d4a843] text-black shadow-lg shadow-[#d4a843]/20 font-bold scale-105"
-                    : "bg-[#141822] text-gray-300 hover:text-white hover:bg-gray-800 border border-gray-800"
+                onClick={() => setActiveTab(cat)}
+                className={`px-4 py-2 rounded-full text-xs font-bold transition-all ${
+                  activeTab === cat
+                    ? "bg-[#a0cc28] text-black shadow-sm"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
                 }`}
               >
-                {tab === "All" ? `All Services (${SERVICES_DATA.length})` : tab}
+                {cat === "All" ? "All Services (20)" : cat}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Services Grid (Preserves all 20 Services) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredServices.map((service) => {
-            const IconComponent = iconMap[service.icon] || Car;
-
+            const Icon = iconMap[service.icon] || Sparkles;
             return (
               <div
                 key={service.id}
-                className="group bg-[#12161f] border border-gray-800 hover:border-[#d4a843]/40 rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/60 flex flex-col justify-between"
+                className="group bg-white rounded-3xl border border-gray-200 hover:border-[#a0cc28] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
                 <div>
-                  {/* Service Image */}
-                  <div className="relative aspect-[16/9] w-full bg-[#0a0c10] overflow-hidden rounded-t-3xl">
+                  {/* Photo Container */}
+                  <div className="relative aspect-[16/9] w-full bg-gray-100 overflow-hidden">
                     <Image
                       src={service.image}
-                      alt={`${service.title} - Saishree Tours Travel Service`}
+                      alt={`${service.title} - Saishree Tours Pune`}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#12161f] via-[#12161f]/40 to-transparent" />
 
                     {/* Category Tag */}
                     <div className="absolute top-3 left-3">
-                      <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-black/80 backdrop-blur-md text-[#f3cf7a] border border-[#d4a843]/30">
+                      <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-white/95 text-gray-900 shadow-sm border border-gray-200">
                         {service.category}
                       </span>
                     </div>
 
-                    {/* Icon Floating Badge */}
-                    <div className="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-[#d4a843] text-black flex items-center justify-center shadow-lg transform group-hover:rotate-6 transition-transform">
-                      <IconComponent className="w-5 h-5" />
-                    </div>
+                    {service.popularRoute && (
+                      <div className="absolute bottom-3 left-3 right-3">
+                        <span className="block px-2.5 py-1 rounded-lg text-[10px] font-bold bg-black/75 text-[#c5e64a] backdrop-blur-xs truncate">
+                          {service.popularRoute}
+                        </span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Body Content */}
-                  <div className="p-5 space-y-3">
-                    <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-[#f3cf7a] transition-colors leading-snug">
-                      {service.title}
-                    </h3>
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-xl bg-[#a0cc28]/15 border border-[#a0cc28]/30 flex items-center justify-center text-[#6e9418] shrink-0">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <h3 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-[#a0cc28] transition-colors">
+                        {service.title}
+                      </h3>
+                    </div>
 
-                    <p className="text-xs text-gray-400 leading-relaxed line-clamp-3">
+                    <p className="text-xs text-gray-600 leading-relaxed mb-4">
                       {service.shortDescription}
                     </p>
 
-                    {/* Highlights */}
-                    <div className="space-y-1 pt-1 border-t border-gray-800/80">
-                      {service.highlights.slice(0, 3).map((item, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-center gap-1.5 text-[11px] text-gray-300"
+                    {/* Highlights Pills */}
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {service.highlights.map((h, i) => (
+                        <span
+                          key={i}
+                          className="px-2.5 py-1 rounded-md text-[10px] font-medium bg-gray-50 text-gray-700 border border-gray-100"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#d4a843]" />
-                          <span>{item}</span>
-                        </div>
+                          {h}
+                        </span>
                       ))}
                     </div>
                   </div>
                 </div>
 
-                {/* Card Button */}
-                <div className="p-5 pt-0">
+                {/* WhatsApp Action Button */}
+                <div className="p-6 pt-0">
                   <a
                     href={getServiceWhatsAppUrl(service.title)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-2.5 px-3.5 rounded-xl font-bold text-xs text-white bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20bd5a] hover:to-[#0f7a6e] flex items-center justify-center gap-2 shadow-sm transition-all"
+                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-bold text-white bg-[#25D366] hover:bg-[#20be5b] shadow-sm transition-transform active:scale-95"
                   >
-                    <MessageCircle className="w-3.5 h-3.5 fill-white" />
-                    <span>Book on WhatsApp</span>
+                    <MessageCircle className="w-4 h-4 fill-white" />
+                    <span>Inquire for {service.title}</span>
                   </a>
                 </div>
               </div>

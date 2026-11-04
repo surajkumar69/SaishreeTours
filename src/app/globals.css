@@ -2,25 +2,26 @@
 
 @layer base {
   :root {
+    --theme-green: #a0cc28;
+    --theme-green-hover: #8eb822;
+    --theme-green-dark: #6e9418;
+    --theme-green-light: #eaf5cf;
+    --theme-dark: #1f2530;
+    --theme-dark-surface: #262d3a;
+    --theme-charcoal: #12161f;
     --gold: #d4a843;
-    --gold-light: #f3cf7a;
-    --gold-dark: #b88a28;
     --brand-red: #d32f2f;
-    --brand-dark: #0b0d10;
-    --brand-surface: #13171f;
-    --brand-card: #181d26;
-    --brand-border: #262c38;
   }
 }
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
-  background-color: #0b0d10;
-  color: #f3f4f6;
+  background-color: #ffffff;
+  color: #1e293b;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   overflow-x: hidden;
 }
@@ -30,43 +31,116 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0d10;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #262c38;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d4a843;
+  background: #a0cc28;
 }
 
-/* Glassmorphism & Gold glows */
-.glass-panel {
-  background: rgba(19, 23, 31, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Careem theme accents */
+.bg-careem-green {
+  background-color: #a0cc28;
+}
+.bg-careem-green-hover:hover {
+  background-color: #8eb822;
+}
+.text-careem-green {
+  color: #a0cc28;
+}
+.border-careem-green {
+  border-color: #a0cc28;
 }
 
-.glass-card {
-  background: linear-gradient(135deg, rgba(24, 29, 38, 0.9) 0%, rgba(17, 21, 28, 0.95) 100%);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 168, 67, 0.15);
+/* Top-right corner diagonal ribbon */
+.corner-ribbon {
+  position: absolute;
+  top: 18px;
+  right: -42px;
+  transform: rotate(45deg);
+  background-color: #a0cc28;
+  color: #ffffff;
+  padding: 4px 44px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 60;
+  pointer-events: none;
 }
 
-.gold-glow {
-  box-shadow: 0 0 25px rgba(212, 168, 67, 0.2);
+/* Hero teardrop map-pin booking container */
+.map-pin-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.45));
 }
 
-.gold-gradient-text {
-  background: linear-gradient(135deg, #f8df97 0%, #d4a843 50%, #b88a28 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.map-pin-body {
+  position: relative;
+  background-color: #242a36;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  padding: 2.25rem 2rem 5.5rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 2px 10px rgba(255, 255, 255, 0.08), 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
-.red-gradient-text {
-  background: linear-gradient(135deg, #ff6b6b 0%, #d32f2f 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Bottom pointer of map pin */
+.map-pin-pointer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(90%);
+  width: 0;
+  height: 0;
+  border-left: 28px solid transparent;
+  border-right: 28px solid transparent;
+  border-top: 36px solid #242a36;
+  z-index: 10;
 }
 
+/* Curving highway road at bottom of hero */
+.curved-road-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Circular lime green FARE ESTIMATE button */
+.fare-estimate-btn {
+  background: linear-gradient(135deg, #b0db33 0%, #a0cc28 50%, #89b41e 100%);
+  color: #1a202c;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 10px 25px rgba(160, 204, 40, 0.45), 0 0 0 5px #ffffff;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fare-estimate-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 15px 30px rgba(160, 204, 40, 0.6), 0 0 0 6px #ffffff;
+}
+
+/* Clean cards for light theme */
+.light-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+.light-card:hover {
+  border-color: #a0cc28;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+}

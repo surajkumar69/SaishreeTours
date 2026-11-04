@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, MessageCircle, Menu, X, Clock, MapPin, ChevronRight, Building } from "lucide-react";
+import { Phone, MessageCircle, Menu, X, Clock, MapPin, ChevronRight, Building, User } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
 import { COMMON_IMAGES } from "@/lib/images";
 import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
@@ -22,294 +22,302 @@ export default function Header() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/#about" },
     { name: "Our Fleet", href: "/#fleet" },
     { name: "Our Services", href: "/#services" },
     { name: "Tour Packages", href: "/#destinations" },
-    { name: "Contact Us", href: "/#contact" },
+    { name: "How It Works", href: "/#how-it-works" },
+    { name: "Pune to Mumbai", href: "/pune-to-mumbai-cab" },
+    { name: "Airport Cab", href: "/pune-airport-cab" },
+    { name: "Tempo Traveller", href: "/tempo-traveller-pune" },
+    { name: "About Us", href: "/#about" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
     <>
-      {/* Mobile Top Contact Bar - Always visible on mobile screens */}
-      <div className="bg-[#0b0e14] border-b border-gray-800 text-[11px] px-3 py-1.5 flex items-center justify-between md:hidden">
-        <a
-          href={`tel:${BUSINESS_INFO.phoneRaw}`}
-          className="flex items-center gap-1 text-[#f3cf7a] font-bold active:text-white"
-        >
-          <Phone className="w-3.5 h-3.5 text-[#d4a843]" />
-          <span>Booking: {BUSINESS_INFO.phone}</span>
-        </a>
-        <span className="text-gray-700">|</span>
-        <a
-          href={`tel:${BUSINESS_INFO.officePhoneRaw}`}
-          className="flex items-center gap-1 text-gray-200 active:text-white font-semibold"
-        >
-          <Building className="w-3.5 h-3.5 text-blue-400" />
-          <span>Office: {BUSINESS_INFO.officePhone}</span>
-        </a>
-      </div>
-
-      {/* Top Notification Bar (Desktop md+) */}
-      <div className="bg-[#11141b] border-b border-gray-800/60 text-xs text-gray-300 py-1.5 px-4 hidden md:block">
+      {/* Top Notification Bar (Desktop) with Contact Details */}
+      <div className="bg-[#1f2530] text-gray-200 text-xs py-1.5 px-4 hidden md:block border-b border-gray-700/50">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1.5 text-gray-300">
-              <MapPin className="w-3.5 h-3.5 text-[#d4a843]" />
+              <MapPin className="w-3.5 h-3.5 text-[#a0cc28]" />
               New Sangvi, Pune, Maharashtra
             </span>
             <span className="flex items-center gap-1.5 text-gray-300">
-              <Clock className="w-3.5 h-3.5 text-[#d4a843]" />
-              24/7 Available for Bookings
+              <Clock className="w-3.5 h-3.5 text-[#a0cc28]" />
+              24/7 Cab & Bus Booking Service
             </span>
           </div>
           <div className="flex items-center gap-5">
             <a
               href={`tel:${BUSINESS_INFO.phoneRaw}`}
-              className="text-[#f3cf7a] font-bold hover:text-white transition-colors flex items-center gap-1.5"
+              className="text-white font-bold hover:text-[#a0cc28] transition-colors flex items-center gap-1.5"
             >
-              <Phone className="w-3.5 h-3.5 text-[#d4a843]" />
+              <Phone className="w-3.5 h-3.5 text-[#a0cc28]" />
               <span>Booking: {BUSINESS_INFO.phone}</span>
             </a>
-            <span className="text-gray-600">|</span>
+            <span className="text-gray-500">|</span>
             <a
               href={`tel:${BUSINESS_INFO.officePhoneRaw}`}
-              className="text-gray-300 hover:text-[#d4a843] transition-colors flex items-center gap-1.5"
+              className="text-gray-300 hover:text-white transition-colors flex items-center gap-1.5"
             >
-              <Building className="w-3.5 h-3.5 text-blue-400" />
+              <Building className="w-3.5 h-3.5 text-[#a0cc28]" />
               <span>Office: {BUSINESS_INFO.officePhone}</span>
             </a>
           </div>
         </div>
       </div>
 
-      {/* Main Header */}
+      {/* Main Careem-Themed Header (Clean White with Green Ribbon) */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${
+        className={`sticky top-0 z-50 transition-all duration-200 relative overflow-hidden ${
           isScrolled
-            ? "bg-[#0b0d10]/95 backdrop-blur-md shadow-2xl border-b border-gray-800/80 py-2 sm:py-2.5"
-            : "bg-gradient-to-b from-[#0b0d10]/95 via-[#0b0d10]/80 to-transparent py-2.5 sm:py-3.5"
+            ? "bg-white/98 backdrop-blur-md shadow-md py-2.5 border-b border-gray-200"
+            : "bg-white py-3.5 border-b border-gray-100"
         }`}
       >
+        {/* Top-Right Corner Diagonal Ribbon (Matching #justcareemit in reference) */}
+        <div className="hidden sm:block">
+          <div className="corner-ribbon">
+            #SaishreeTours
+          </div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Logo - Increased Size & Transparent Background */}
+            {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative h-14 w-44 sm:h-16 sm:w-56 md:h-18 md:w-64 lg:h-20 lg:w-72 transition-transform duration-300 group-hover:scale-105">
+              <div className="relative h-14 w-44 sm:h-16 sm:w-56 md:h-16 md:w-64 transition-transform duration-200 group-hover:scale-102">
                 <Image
                   src={COMMON_IMAGES.logo}
                   alt="Saishree Tours Logo"
                   fill
-                  sizes="(max-width: 640px) 180px, (max-width: 1024px) 260px, 300px"
-                  className="object-contain"
+                  sizes="(max-width: 640px) 180px, (max-width: 1024px) 240px, 280px"
+                  className="object-contain object-left"
                   priority
                 />
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="px-3 py-2 text-sm font-medium text-gray-200 hover:text-[#d4a843] rounded-lg transition-colors relative group"
-                >
-                  {link.name}
-                  <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#d4a843] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-200" />
-                </Link>
-              ))}
+              <Link
+                href="/"
+                className="px-3 py-2 text-sm font-semibold text-gray-800 hover:text-[#a0cc28] rounded-md transition-colors"
+              >
+                Home
+              </Link>
+              <Link
+                href="/#fleet"
+                className="px-3 py-2 text-sm font-semibold text-gray-800 hover:text-[#a0cc28] rounded-md transition-colors"
+              >
+                The Fleet
+              </Link>
+              <Link
+                href="/#services"
+                className="px-3 py-2 text-sm font-semibold text-gray-800 hover:text-[#a0cc28] rounded-md transition-colors"
+              >
+                Services
+              </Link>
+              <Link
+                href="/#how-it-works"
+                className="px-3 py-2 text-sm font-semibold text-gray-800 hover:text-[#a0cc28] rounded-md transition-colors"
+              >
+                How It Works
+              </Link>
+              <Link
+                href="/#destinations"
+                className="px-3 py-2 text-sm font-semibold text-gray-800 hover:text-[#a0cc28] rounded-md transition-colors"
+              >
+                Destinations
+              </Link>
+              <Link
+                href="/pune-to-mumbai-cab"
+                className="px-3 py-2 text-sm font-semibold text-gray-800 hover:text-[#a0cc28] rounded-md transition-colors"
+              >
+                Pune-Mumbai
+              </Link>
+              <Link
+                href="/#contact"
+                className="px-3 py-2 text-sm font-semibold text-gray-800 hover:text-[#a0cc28] rounded-md transition-colors"
+              >
+                Contact
+              </Link>
             </nav>
 
-            {/* Header Right Action CTAs - BOTH Numbers Clickable + WhatsApp */}
-            <div className="hidden xl:flex items-center gap-2.5">
-              <a
-                href={`tel:${BUSINESS_INFO.phoneRaw}`}
-                className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-[#f3cf7a] bg-gray-900/90 hover:bg-gray-800 border border-gray-700/80 rounded-full transition-all hover:border-[#d4a843]"
-                title="24/7 Booking Helpline"
-              >
-                <div className="w-5 h-5 rounded-full bg-[#d4a843]/20 flex items-center justify-center text-[#d4a843]">
-                  <Phone className="w-3 h-3" />
-                </div>
-                <span>Booking: {BUSINESS_INFO.phone}</span>
-              </a>
+            {/* Right Side Actions: Call Button + SIGN UP/LOG IN + Hamburger Icon (as in reference) */}
+            <div className="flex items-center gap-3 sm:gap-4 sm:mr-10 lg:mr-14">
+              {/* Call desk pills */}
+              <div className="hidden xl:flex items-center gap-2">
+                <a
+                  href={`tel:${BUSINESS_INFO.phoneRaw}`}
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-gray-900 bg-gray-100 hover:bg-[#a0cc28]/15 hover:text-black rounded-full border border-gray-200 transition-colors"
+                  title="24/7 Booking Helpline"
+                >
+                  <Phone className="w-3.5 h-3.5 text-[#a0cc28]" />
+                  <span>{BUSINESS_INFO.phone}</span>
+                </a>
+              </div>
 
-              <a
-                href={`tel:${BUSINESS_INFO.officePhoneRaw}`}
-                className="flex items-center gap-2 px-3 py-1.5 text-xs font-semibold text-gray-300 bg-gray-900/60 hover:bg-gray-800 border border-gray-800 rounded-full transition-all hover:border-blue-400"
-                title="Office Calling Desk"
+              {/* Reference SIGN UP / LOG IN style text */}
+              <Link
+                href="/#booking-form"
+                className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-gray-900 hover:text-[#a0cc28] transition-colors"
               >
-                <div className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
-                  <Building className="w-3 h-3" />
-                </div>
-                <span>Office: {BUSINESS_INFO.officePhone}</span>
-              </a>
+                <User className="w-3.5 h-3.5 text-[#a0cc28]" />
+                <span>SIGN UP / LOG IN</span>
+              </Link>
 
+              {/* Instant WhatsApp Quick Button */}
               <a
                 href={getGeneralWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-3.5 py-1.5 text-xs font-bold text-white bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20bd5a] hover:to-[#0f7a6e] rounded-full shadow-lg shadow-emerald-900/30 transition-all transform hover:scale-105 active:scale-95"
+                className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-[#25D366] hover:bg-[#20be5b] rounded-full shadow-sm transition-transform active:scale-95"
               >
                 <MessageCircle className="w-3.5 h-3.5 fill-white" />
                 <span>WhatsApp</span>
               </a>
-            </div>
 
-            {/* Mid-screen Dual Call Quick Links (sm to xl) */}
-            <div className="hidden sm:flex xl:hidden items-center gap-2">
-              <a
-                href={`tel:${BUSINESS_INFO.phoneRaw}`}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-[#f3cf7a] bg-gray-900 border border-gray-700/80 rounded-full hover:border-[#d4a843]"
-                title={`Booking Helpline: ${BUSINESS_INFO.phone}`}
-              >
-                <Phone className="w-3.5 h-3.5 text-[#d4a843]" />
-                <span>{BUSINESS_INFO.phone}</span>
-              </a>
-
-              <a
-                href={`tel:${BUSINESS_INFO.officePhoneRaw}`}
-                className="p-2 rounded-full bg-gray-900 border border-gray-700 text-blue-400 hover:border-blue-400"
-                title={`Office: ${BUSINESS_INFO.officePhone}`}
-              >
-                <Building className="w-4 h-4" />
-              </a>
-
-              <a
-                href={getGeneralWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-gradient-to-r from-[#25D366] to-[#128C7E] rounded-full shadow-md"
-              >
-                <MessageCircle className="w-3.5 h-3.5 fill-white" />
-                <span>WhatsApp</span>
-              </a>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="flex items-center gap-2 lg:hidden">
-              <a
-                href={getGeneralWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-white bg-[#25D366] hover:bg-[#20bd5a] rounded-full sm:hidden transition-all shadow-md"
-                aria-label="WhatsApp Us"
-              >
-                <MessageCircle className="w-4 h-4 fill-white" />
-              </a>
-
+              {/* Hamburger Menu Toggle (Matching the reference 3 bars) */}
               <button
                 type="button"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors focus:outline-none"
-                aria-label="Toggle menu"
+                onClick={() => setMobileMenuOpen(true)}
+                className="p-2 rounded-lg text-gray-800 hover:text-black hover:bg-gray-100 transition-colors"
+                aria-label="Open Navigation Menu"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6 text-[#d4a843]" /> : <Menu className="w-6 h-6" />}
+                <Menu className="w-6 h-6 stroke-[2.5]" />
               </button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Slide-out Drawer Panel (Accessible on mobile & desktop like reference) */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-50 flex">
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity"
             onClick={() => setMobileMenuOpen(false)}
           />
 
-          {/* Drawer Panel */}
-          <div className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-[#11141b] border-l border-gray-800 p-6 flex flex-col justify-between overflow-y-auto shadow-2xl">
+          {/* Drawer Body */}
+          <div className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-white border-l border-gray-200 p-6 flex flex-col justify-between overflow-y-auto shadow-2xl z-50">
             <div>
               {/* Drawer Header */}
-              <div className="flex items-center justify-between pb-5 border-b border-gray-800">
-                <div className="relative h-14 w-44 sm:h-16 sm:w-52">
+              <div className="flex items-center justify-between pb-4 border-b border-gray-200">
+                <div className="relative h-12 w-40">
                   <Image
                     src={COMMON_IMAGES.logo}
                     alt="Saishree Tours Logo"
                     fill
-                    sizes="200px"
-                    className="object-contain"
+                    sizes="160px"
+                    className="object-contain object-left"
                   />
                 </div>
                 <button
+                  type="button"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 rounded-lg bg-gray-800/80 text-gray-300 hover:text-white"
+                  className="p-2 rounded-lg bg-gray-100 text-gray-700 hover:text-black hover:bg-gray-200"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
               {/* Tagline */}
-              <p className="text-xs text-[#d4a843] font-medium tracking-wide uppercase mt-3 mb-6">
-                Journey Beyond Destination
+              <p className="text-xs text-[#a0cc28] font-bold tracking-wider uppercase mt-3 mb-5">
+                Journey Beyond Destination • 24/7 Available
               </p>
 
-              {/* Nav links */}
-              <nav className="flex flex-col gap-2">
+              {/* Nav Links */}
+              <nav className="space-y-1">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-between px-3 py-3 text-base font-medium text-gray-200 hover:text-[#d4a843] hover:bg-gray-800/60 rounded-xl transition-all"
+                    className="flex items-center justify-between px-3 py-2.5 text-sm font-semibold text-gray-800 hover:text-[#a0cc28] hover:bg-gray-50 rounded-xl transition-colors"
                   >
                     <span>{link.name}</span>
-                    <ChevronRight className="w-4 h-4 text-gray-500" />
+                    <ChevronRight className="w-4 h-4 text-gray-400" />
                   </Link>
                 ))}
               </nav>
+
+              {/* Dedicated Route Cards */}
+              <div className="mt-5 pt-4 border-t border-gray-200 space-y-2">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500">
+                  Featured Routes
+                </span>
+                <Link
+                  href="/pune-to-mumbai-cab"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block p-2.5 bg-gray-50 hover:bg-[#a0cc28]/10 rounded-xl border border-gray-200 transition-colors"
+                >
+                  <div className="text-xs font-bold text-gray-900">Pune ⇄ Mumbai Expressway</div>
+                  <div className="text-[11px] text-gray-500">From ₹2,499 • 3 Hours Express</div>
+                </Link>
+                <Link
+                  href="/pune-airport-cab"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block p-2.5 bg-gray-50 hover:bg-[#a0cc28]/10 rounded-xl border border-gray-200 transition-colors"
+                >
+                  <div className="text-xs font-bold text-gray-900">Pune / Mumbai Airport Transfers</div>
+                  <div className="text-[11px] text-gray-500">From ₹800 • Punctual Curbside Pickup</div>
+                </Link>
+                <Link
+                  href="/tempo-traveller-pune"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block p-2.5 bg-gray-50 hover:bg-[#a0cc28]/10 rounded-xl border border-gray-200 transition-colors"
+                >
+                  <div className="text-xs font-bold text-gray-900">17 Seater Tempo Traveller</div>
+                  <div className="text-[11px] text-gray-500">From ₹25/km • Pushback Luxury Seats</div>
+                </Link>
+              </div>
             </div>
 
-            {/* Drawer Footer with Quick Calls - BOTH Numbers & WhatsApp */}
-            <div className="pt-6 border-t border-gray-800 flex flex-col gap-2.5">
-              <a
-                href={getGeneralWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-bold text-white bg-gradient-to-r from-[#25D366] to-[#128C7E] rounded-xl shadow-lg shadow-emerald-950/40"
-              >
-                <MessageCircle className="w-5 h-5 fill-white" />
-                <span>WhatsApp Booking</span>
-              </a>
+            {/* Drawer Footer Contact Numbers (Both Mandatory Numbers Preserved) */}
+            <div className="pt-6 border-t border-gray-200 space-y-2.5">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500 block">
+                Direct Help & Reservations
+              </span>
 
               <a
                 href={`tel:${BUSINESS_INFO.phoneRaw}`}
-                className="w-full flex items-center justify-between py-2.5 px-4 text-xs font-bold text-white bg-gray-900 border border-gray-700/80 rounded-xl hover:border-[#d4a843] transition-colors"
+                className="flex items-center gap-2 p-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-bold text-xs hover:border-[#a0cc28]"
               >
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-lg bg-[#d4a843]/20 text-[#d4a843] flex items-center justify-center">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <div className="text-left">
-                    <div className="text-[10px] text-gray-400 font-normal">Booking & 24/7 Helpline</div>
-                    <div className="text-white font-bold">{BUSINESS_INFO.phone}</div>
-                  </div>
+                <div className="w-7 h-7 rounded-lg bg-[#a0cc28]/20 flex items-center justify-center text-[#a0cc28]">
+                  <Phone className="w-3.5 h-3.5" />
                 </div>
-                <span className="text-[10px] font-semibold text-[#f3cf7a] uppercase bg-[#d4a843]/15 px-2 py-0.5 rounded">Call</span>
+                <div>
+                  <div className="text-[10px] text-gray-500 font-medium">Booking / WhatsApp</div>
+                  <div>{BUSINESS_INFO.phone}</div>
+                </div>
               </a>
 
               <a
                 href={`tel:${BUSINESS_INFO.officePhoneRaw}`}
-                className="w-full flex items-center justify-between py-2.5 px-4 text-xs font-semibold text-gray-200 bg-gray-900/60 border border-gray-800 rounded-xl hover:border-blue-400 transition-colors"
+                className="flex items-center gap-2 p-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 font-semibold text-xs hover:border-blue-400"
               >
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center">
-                    <Building className="w-4 h-4" />
-                  </div>
-                  <div className="text-left">
-                    <div className="text-[10px] text-gray-400 font-normal">Office Desk</div>
-                    <div className="text-gray-200 font-semibold">{BUSINESS_INFO.officePhone}</div>
-                  </div>
+                <div className="w-7 h-7 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
+                  <Building className="w-3.5 h-3.5" />
                 </div>
-                <span className="text-[10px] font-semibold text-blue-300 uppercase bg-blue-500/15 px-2 py-0.5 rounded">Call</span>
+                <div>
+                  <div className="text-[10px] text-gray-500 font-medium">Office Calling Desk</div>
+                  <div>{BUSINESS_INFO.officePhone}</div>
+                </div>
               </a>
 
-              <p className="text-[11px] text-center text-gray-400 mt-1">
-                New Sangvi, Pune • 24/7 Service Available
-              </p>
+              <a
+                href={getGeneralWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-bold text-white bg-[#25D366] hover:bg-[#20be5b] shadow-md transition-all"
+              >
+                <MessageCircle className="w-4 h-4 fill-white" />
+                <span>Chat on WhatsApp</span>
+              </a>
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ import {
   Check,
   MessageCircle,
   Sparkles,
-  ArrowRight,
+  Phone,
   ShieldCheck,
 } from "lucide-react";
 import { FLEET_DATA, Vehicle } from "@/lib/constants";
@@ -25,147 +25,235 @@ export default function Fleet() {
       ? FLEET_DATA
       : FLEET_DATA.filter((v) => v.category === activeCategory);
 
+  // 5 Featured Fleet Archetypes directly matching the reference screenshot row:
+  // Economy, Max, Prime / Family, Business, First Class
+  const featuredArchetypes = [
+    {
+      id: "swift-dzire",
+      title: "Economy",
+      model: "Swift Dzire / Xcent",
+      capacity: "4 Passengers",
+      image: "/images/fleet-swift-dzire.jpg",
+      tag: "Best City & Highway Value",
+      price: "From ₹11/km",
+    },
+    {
+      id: "mahindra-scorpio",
+      title: "Max",
+      model: "Mahindra Scorpio / XUV500",
+      capacity: "6-7 Passengers",
+      image: "/images/fleet-mahindra-scorpio.jpg",
+      tag: "High Ground Clearance",
+      price: "From ₹15/km",
+    },
+    {
+      id: "maruti-ertiga",
+      title: "Prime / Family",
+      model: "Maruti Suzuki Ertiga",
+      capacity: "6-7 Passengers",
+      image: "/images/fleet-maruti-ertiga.jpg",
+      tag: "Family Favorite MPV",
+      price: "From ₹14/km",
+    },
+    {
+      id: "innova-crysta",
+      title: "Business",
+      model: "Toyota Innova Crysta",
+      capacity: "6-7 Passengers",
+      image: "/images/fleet-innova-crysta.jpg",
+      tag: "Executive VIP Luxury",
+      price: "From ₹18/km",
+    },
+    {
+      id: "tempo-traveller-17",
+      title: "First Class",
+      model: "17 Seater Tempo & Coaches",
+      capacity: "17-45 Passengers",
+      image: "/images/fleet-tempo-traveller-17.jpg",
+      tag: "Pushback Group Travel",
+      price: "From ₹25/km",
+    },
+  ];
+
   return (
-    <section id="fleet" className="py-20 bg-[#0b0d10] relative">
+    <section id="fleet" className="py-20 sm:py-24 bg-[#f8f9fb] text-gray-900 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#d4a843]/10 border border-[#d4a843]/20 text-[#d4a843] text-xs font-bold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
-            Executive & Economy Options
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-            Our Premium Fleet
+        {/* Section Header (Exact match for reference: THE FLEET + subtitle) */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-wide text-gray-900">
+            The Fleet
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base mt-3 leading-relaxed">
-            From city sedans and luxury Innova Crystas to 17-seater Tempo Travellers
-            and multi-axle luxury tourist coaches — maintained to spotless showroom standards.
+          <p className="text-sm sm:text-base text-gray-600 mt-2 font-normal">
+            Get a ride that matches your style and budget
           </p>
 
-          {/* Category Filter Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
-                  activeCategory === cat
-                    ? "bg-[#d4a843] text-black shadow-lg shadow-[#d4a843]/20 font-bold scale-105"
-                    : "bg-[#141822] text-gray-300 hover:text-white hover:bg-gray-800 border border-gray-800"
-                }`}
+          {/* Reference Blueprint Featured Row: 5 Clean Vehicles Across */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mt-10">
+            {featuredArchetypes.map((item) => (
+              <a
+                key={item.id}
+                href={getVehicleWhatsAppUrl(item.model, item.capacity)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-white rounded-2xl p-4 border border-gray-200/80 hover:border-[#a0cc28] shadow-xs hover:shadow-md transition-all text-center flex flex-col justify-between"
               >
-                {cat === "All" ? "All Vehicles (11)" : cat}
-              </button>
+                <div>
+                  {/* Clean Vehicle Photo */}
+                  <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-gray-50 mb-3">
+                    <Image
+                      src={item.image}
+                      alt={`${item.title} - ${item.model}`}
+                      fill
+                      sizes="(max-width: 640px) 50vw, 20vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <h3 className="text-sm font-extrabold text-gray-900 group-hover:text-[#a0cc28] transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-gray-500 font-medium mt-0.5">
+                    {item.model}
+                  </p>
+                  <p className="text-[11px] text-gray-400 mt-1">
+                    {item.capacity}
+                  </p>
+                </div>
+
+                <div className="mt-3 pt-2 border-t border-gray-100 flex items-center justify-between">
+                  <span className="text-[11px] font-bold text-[#a0cc28]">
+                    {item.price}
+                  </span>
+                  <span className="text-[10px] font-bold text-gray-700 bg-gray-100 group-hover:bg-[#a0cc28] group-hover:text-black px-2 py-0.5 rounded-full transition-colors">
+                    Book
+                  </span>
+                </div>
+              </a>
             ))}
           </div>
         </div>
 
-        {/* Fleet Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredVehicles.map((vehicle) => (
-            <div
-              key={vehicle.id}
-              className="group bg-[#12161f] border border-gray-800/80 hover:border-[#d4a843]/50 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-[#d4a843]/10 flex flex-col justify-between"
-            >
-              <div>
-                {/* Vehicle Image Container */}
-                <div className="relative aspect-[16/9] w-full bg-[#0a0c10] overflow-hidden rounded-t-3xl">
-                  <Image
-                    src={vehicle.image}
-                    alt={`${vehicle.name} (${vehicle.category}) - Saishree Tours Pune`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                  />
+        {/* Detailed Fleet Browser: All 11 Verified Vehicles Preserved */}
+        <div className="mt-16 pt-12 border-t border-gray-200">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+            <div>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                Explore Full Vehicle Specifications
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 mt-1">
+                All 11 vehicles are commercially licensed, sanitised, and chauffeur driven
+              </p>
+            </div>
 
-                  {/* Badges Overlay */}
-                  <div className="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
-                    <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-black/75 backdrop-blur-md text-[#f3cf7a] border border-[#d4a843]/40">
-                      {vehicle.category}
-                    </span>
-                    {vehicle.tag && (
-                      <span className="px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-[#d32f2f] text-white shadow-md">
-                        {vehicle.tag}
+            {/* Category Filter Tabs */}
+            <div className="flex flex-wrap items-center gap-1.5">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${
+                    activeCategory === cat
+                      ? "bg-[#a0cc28] text-black shadow-sm"
+                      : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+                  }`}
+                >
+                  {cat === "All" ? "All (11)" : cat}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Complete Fleet Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {filteredVehicles.map((vehicle) => (
+              <div
+                key={vehicle.id}
+                className="group bg-white border border-gray-200 hover:border-[#a0cc28] rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col justify-between"
+              >
+                <div>
+                  {/* Distinct High-Res Vehicle Photograph */}
+                  <div className="relative aspect-[16/10] w-full bg-gray-100 overflow-hidden">
+                    <Image
+                      src={vehicle.image}
+                      alt={`${vehicle.name} (${vehicle.category}) - Saishree Tours Pune`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+
+                    {/* Top Overlay Badges */}
+                    <div className="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                      <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-white/90 backdrop-blur-md text-gray-900 border border-gray-200 shadow-sm">
+                        {vehicle.category}
                       </span>
+                      {vehicle.tag && (
+                        <span className="px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-[#a0cc28] text-black shadow-sm">
+                          {vehicle.tag}
+                        </span>
+                      )}
+                    </div>
+
+                    {vehicle.ac && (
+                      <div className="absolute top-3 right-3 z-10">
+                        <span className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-xs">
+                          <Wind className="w-3 h-3 text-emerald-600" />
+                          Dual AC
+                        </span>
+                      </div>
                     )}
                   </div>
 
-                  {/* AC badge */}
-                  {vehicle.ac && (
-                    <div className="absolute top-3 right-3 z-10">
-                      <span className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-800 backdrop-blur-sm">
-                        <Wind className="w-3 h-3" />
-                        A/C Chilled
-                      </span>
+                  {/* Vehicle Details */}
+                  <div className="p-6">
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <h4 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-[#a0cc28] transition-colors">
+                        {vehicle.name}
+                      </h4>
                     </div>
-                  )}
 
-                  {/* Bottom Vignette */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#12161f] via-transparent to-transparent opacity-80" />
-                </div>
+                    <p className="text-xs text-gray-600 leading-relaxed mb-4 line-clamp-2">
+                      {vehicle.description}
+                    </p>
 
-                {/* Card Content */}
-                <div className="p-5 sm:p-6 space-y-4">
-                  {/* Name */}
-                  <div className="flex items-start justify-between gap-2">
-                    <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#f3cf7a] transition-colors">
-                      {vehicle.name}
-                    </h3>
-                  </div>
-
-                  {/* Specs Bar (Capacity & Luggage) */}
-                  <div className="flex items-center gap-4 py-2.5 px-3.5 bg-[#090b0e] rounded-2xl border border-gray-800 text-xs text-gray-300">
-                    <div className="flex items-center gap-1.5">
-                      <Users className="w-4 h-4 text-[#d4a843]" />
-                      <span className="font-semibold text-white">{vehicle.capacity}</span>
+                    {/* Capacity & Luggage Badges */}
+                    <div className="grid grid-cols-2 gap-2 p-3 bg-gray-50 rounded-2xl mb-4 border border-gray-100 text-xs">
+                      <div className="flex items-center gap-2 text-gray-700 font-semibold">
+                        <Users className="w-4 h-4 text-[#a0cc28] shrink-0" />
+                        <span>{vehicle.capacity}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-700 font-semibold">
+                        <Briefcase className="w-4 h-4 text-gray-400 shrink-0" />
+                        <span>{vehicle.luggage}</span>
+                      </div>
                     </div>
-                    <span className="text-gray-700">|</span>
-                    <div className="flex items-center gap-1.5">
-                      <Briefcase className="w-4 h-4 text-gray-400" />
-                      <span>{vehicle.luggage}</span>
+
+                    {/* Features list */}
+                    <div className="space-y-1.5">
+                      {vehicle.features.map((feature, i) => (
+                        <div key={i} className="flex items-center gap-2 text-[11px] text-gray-600">
+                          <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
                     </div>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-xs sm:text-sm text-gray-400 leading-relaxed line-clamp-2">
-                    {vehicle.description}
-                  </p>
-
-                  {/* Features Pills */}
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {vehicle.features.map((feature, idx) => (
-                      <span
-                        key={idx}
-                        className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-gray-800/80 text-gray-300 border border-gray-700/50"
-                      >
-                        ✓ {feature}
-                      </span>
-                    ))}
                   </div>
                 </div>
-              </div>
 
-              {/* Card Footer Button */}
-              <div className="p-5 sm:p-6 pt-0">
-                <a
-                  href={getVehicleWhatsAppUrl(vehicle.name, vehicle.capacity)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20bd5a] hover:to-[#0f7a6e] flex items-center justify-center gap-2 shadow-md shadow-emerald-950/40 hover:shadow-emerald-900/50 transition-all transform hover:-translate-y-0.5"
-                >
-                  <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>Book {vehicle.name.split(" ")[0]} on WhatsApp</span>
-                </a>
+                {/* Card Action Footer */}
+                <div className="p-6 pt-0">
+                  <a
+                    href={getVehicleWhatsAppUrl(vehicle.name, vehicle.capacity)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-bold text-white bg-[#25D366] hover:bg-[#20bd5a] shadow-sm transition-all transform group-hover:scale-101"
+                  >
+                    <MessageCircle className="w-4 h-4 fill-white" />
+                    <span>Inquire Rates on WhatsApp</span>
+                  </a>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Fleet Bottom Note */}
-        <div className="mt-12 text-center text-xs text-gray-400 flex items-center justify-center gap-2">
-          <ShieldCheck className="w-4 h-4 text-[#d4a843]" />
-          <span>All vehicles are commercial RTO registered, fully insured, sanitized, and tracked via GPS.</span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,124 +1,177 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import {
-  MapPin,
-  CarFront,
-  CheckCircle,
-  Smile,
-  ArrowRight,
-  ShieldCheck,
-  PhoneCall,
   Phone,
   Building,
-  Sparkles,
+  MessageCircle,
+  Menu,
+  CheckCircle2,
+  Calendar,
+  Clock,
+  CarFront,
+  ShieldCheck,
 } from "lucide-react";
 import { HOW_IT_WORKS, BUSINESS_INFO } from "@/lib/constants";
 import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 
 export default function HowItWorks() {
-  const icons = [MapPin, CarFront, CheckCircle, Smile];
-
   return (
-    <section className="py-20 bg-gradient-to-b from-[#0b0d10] via-[#0f1218] to-[#0b0d10] relative overflow-hidden border-y border-gray-800/60">
-      {/* Subtle background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#d4a843]/5 blur-[120px] rounded-full pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#d4a843]/10 border border-[#d4a843]/20 text-[#d4a843] text-xs font-bold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
-            Simple 4-Step Process
+    <section id="how-it-works" className="py-20 sm:py-24 bg-white text-gray-900 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header: Centered Divider & Title (Exact match for reference) */}
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <span className="w-12 h-px bg-gray-300" />
+            <span className="text-xs font-bold uppercase tracking-[0.25em] text-gray-500">
+              HOW IT WORKS
+            </span>
+            <span className="w-12 h-px bg-gray-300" />
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            How It Works
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-wide text-gray-900 mt-1">
+            Book A Ride Easily
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base mt-3 leading-relaxed">
-            Booking your taxi or luxury bus with Saishree Tours takes less than a minute.
-            Enjoy effortless travel from pickup to drop-off.
+          <p className="text-xs sm:text-sm text-gray-600 mt-4 leading-relaxed font-normal max-w-xl mx-auto">
+            Already a user? Use the Saishree Tours booking to reserve a car. You can also call or email us and we&apos;ll be happy to assist you. Choose between booking a car to come to you now, or scheduling a ride for later by selecting a specific date and time.
           </p>
         </div>
 
-        {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-          {HOW_IT_WORKS.map((item, index) => {
-            const IconComponent = icons[index];
-            return (
-              <div
-                key={item.step}
-                className="relative group bg-[#141822]/80 hover:bg-[#181d29] border border-gray-800 hover:border-[#d4a843]/40 rounded-3xl p-6 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
-              >
-                {/* Step Number Top Badge */}
-                <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#d4a843]/20 to-transparent border border-[#d4a843]/30 flex items-center justify-center text-[#d4a843] group-hover:scale-110 transition-transform">
-                    <IconComponent className="w-6 h-6" />
-                  </div>
-                  <span className="text-3xl font-black text-gray-700/60 group-hover:text-[#d4a843]/40 transition-colors font-mono">
-                    {item.step}
+        {/* Two-Column Layout: Smartphone Mockup (Left) + Steps & Benefits (Right) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center max-w-5xl mx-auto">
+          {/* Left Column: White Smartphone Frame Mockup (Matching reference screenshot) */}
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative w-64 sm:w-72 bg-white rounded-[44px] p-3.5 shadow-2xl border-4 border-gray-200">
+              {/* Speaker slit & camera dot */}
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <span className="w-2 h-2 rounded-full bg-gray-300" />
+                <span className="w-14 h-1.5 rounded-full bg-gray-300" />
+              </div>
+
+              {/* Smartphone Screen Content */}
+              <div className="bg-[#f8fafc] border border-gray-200 rounded-[32px] p-5 shadow-inner flex flex-col justify-between min-h-[360px]">
+                {/* App Screen Header */}
+                <div className="flex items-center justify-between pb-3 border-b border-gray-200">
+                  <span className="text-[11px] font-black tracking-wider text-gray-900">
+                    SAISHREE TOURS
                   </span>
+                  <Menu className="w-4 h-4 text-gray-700" />
                 </div>
 
-                {/* Content */}
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#f3cf7a] transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
-                  {item.description}
-                </p>
+                {/* Question Prompt */}
+                <div className="text-center my-4">
+                  <p className="text-xs sm:text-sm font-extrabold text-gray-800">
+                    When should we <br />
+                    pick you up?
+                  </p>
+                </div>
 
-                {/* Step Connector Indicator for Desktop */}
-                {index < HOW_IT_WORKS.length - 1 && (
-                  <div className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-20 text-gray-600">
-                    <ArrowRight className="w-5 h-5 text-[#d4a843]/60" />
-                  </div>
-                )}
+                {/* Big Green Buttons (Matching reference NOW & LATER) */}
+                <div className="space-y-3.5 my-2">
+                  <a
+                    href={getGeneralWhatsAppUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full py-3.5 px-4 rounded-xl bg-[#a0cc28] hover:bg-[#8eb822] text-center shadow-md transition-transform active:scale-95"
+                  >
+                    <div className="text-sm font-black text-black uppercase tracking-wider">
+                      NOW
+                    </div>
+                    <div className="text-[10px] text-gray-900 font-medium mt-0.5">
+                      As soon as possible
+                    </div>
+                  </a>
+
+                  <a
+                    href="#booking-form"
+                    className="block w-full py-3.5 px-4 rounded-xl bg-[#c5e64a] hover:bg-[#b2d633] text-center shadow-sm transition-transform active:scale-95"
+                  >
+                    <div className="text-sm font-black text-black uppercase tracking-wider">
+                      LATER
+                    </div>
+                    <div className="text-[10px] text-gray-900 font-medium mt-0.5">
+                      Schedule for later
+                    </div>
+                  </a>
+                </div>
+
+                {/* Footer status inside phone screen */}
+                <div className="text-center pt-3 border-t border-gray-200">
+                  <span className="text-[9px] font-bold text-gray-500 uppercase tracking-wider">
+                    24/7 Available in Pune
+                  </span>
+                </div>
               </div>
-            );
-          })}
-        </div>
 
-        {/* Careem-inspired Quick Booking Strip Banner */}
-        <div className="mt-14 bg-gradient-to-r from-[#171b25] via-[#1c2230] to-[#171b25] border border-gray-800 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
-          <div className="flex items-center gap-4 text-left">
-            <div className="w-12 h-12 rounded-2xl bg-[#d4a843]/15 border border-[#d4a843]/30 flex items-center justify-center text-[#d4a843] shrink-0">
-              <PhoneCall className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="text-base sm:text-lg font-bold text-white">
-                Need Instant Confirmation in 2 Minutes?
-              </h4>
-              <p className="text-xs sm:text-sm text-gray-400">
-                Call our dispatch team directly at{" "}
-                <span className="text-white font-semibold">{BUSINESS_INFO.phone}</span> or{" "}
-                <span className="text-white font-semibold">{BUSINESS_INFO.officePhone}</span>
-              </p>
+              {/* Home button indicator */}
+              <div className="w-12 h-1 rounded-full bg-gray-300 mx-auto mt-3" />
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto">
-            <a
-              href={getGeneralWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40 hover:scale-105 transition-transform"
-            >
-              <span>WhatsApp Booking</span>
-            </a>
-            <a
-              href={`tel:${BUSINESS_INFO.phoneRaw}`}
-              className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gray-900 border border-gray-700/80 hover:border-[#d4a843] text-[#f3cf7a] text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-colors"
-            >
-              <Phone className="w-4 h-4 text-[#d4a843]" />
-              <span>Booking: {BUSINESS_INFO.phone}</span>
-            </a>
-            <a
-              href={`tel:${BUSINESS_INFO.officePhoneRaw}`}
-              className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gray-900/60 border border-gray-800 hover:border-blue-400 text-gray-200 text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition-colors"
-            >
-              <Building className="w-4 h-4 text-blue-400" />
-              <span>Office: {BUSINESS_INFO.officePhone}</span>
-            </a>
+          {/* Right Column: 4 Clear Steps with Preserved Data + Both Mandatory Phone Numbers */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {HOW_IT_WORKS.map((item) => (
+                <div
+                  key={item.step}
+                  className="p-4 rounded-2xl bg-gray-50 border border-gray-200/80 hover:border-[#a0cc28] transition-all hover:shadow-md"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-black text-[#a0cc28] bg-[#a0cc28]/15 px-2.5 py-0.5 rounded-full">
+                      Step {item.step}
+                    </span>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  </div>
+                  <h3 className="text-sm font-bold text-gray-900 mb-1">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-gray-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Quick Calling & Support Banner with BOTH Mandatory Phone Numbers */}
+            <div className="p-5 rounded-2xl bg-[#1f2530] text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg">
+              <div>
+                <h4 className="text-sm font-extrabold text-white">
+                  Prefer To Book By Phone?
+                </h4>
+                <p className="text-xs text-gray-300 mt-0.5">
+                  Call our 24/7 reservation desks in New Sangvi, Pune
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+                <a
+                  href={`tel:${BUSINESS_INFO.phoneRaw}`}
+                  className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2 text-xs font-bold text-black bg-[#a0cc28] hover:bg-[#8eb822] rounded-xl transition-colors"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  <span>{BUSINESS_INFO.phone}</span>
+                </a>
+                <a
+                  href={`tel:${BUSINESS_INFO.officePhoneRaw}`}
+                  className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-gray-700 hover:bg-gray-600 rounded-xl transition-colors"
+                >
+                  <Building className="w-3.5 h-3.5 text-blue-400" />
+                  <span>{BUSINESS_INFO.officePhone}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Across Section: Skyline Silhouette Vector, Road, Pins, White Car & Dots (Exact match for reference) */}
+        <div className="mt-16 sm:mt-20 pt-6">
+          <div className="relative w-full max-w-4xl mx-auto h-48 sm:h-64">
+            <Image
+              src="/images/skyline-road.svg"
+              alt="Saishree Tours City Travel Network"
+              fill
+              className="object-contain"
+            />
           </div>
         </div>
       </div>
