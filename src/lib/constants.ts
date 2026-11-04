@@ -17,6 +17,8 @@ export const BUSINESS_INFO = {
   state: "Maharashtra",
   country: "India",
   workingHours: "24 Hours / 7 Days a Week",
+  facebook: "https://www.facebook.com/share/1CH7iBG2Kh/?mibextid=wwXIfr",
+  instagram: "https://www.instagram.com/saishreetours09?cplk=NXJ4NXQwMHdmeDF1&utm_source=qr",
 };
 
 export interface Vehicle {
