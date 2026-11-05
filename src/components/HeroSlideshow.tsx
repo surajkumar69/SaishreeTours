@@ -18,6 +18,11 @@ import {
 } from "lucide-react";
 import { PDF_DESTINATIONS, DestinationSlide } from "@/lib/images";
 
+// Homepage Auto-Slideshow Destinations (Excluding Diveagar Beach & Resort as instructed)
+const HERO_SLIDES = PDF_DESTINATIONS.filter(
+  (d) => d.id !== "diveagar-beach" && !d.name.toLowerCase().includes("diveagar")
+);
+
 export default function HeroSlideshow() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -25,7 +30,7 @@ export default function HeroSlideshow() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
 
-  const totalSlides = PDF_DESTINATIONS.length;
+  const totalSlides = HERO_SLIDES.length;
 
   const goToNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % totalSlides);
@@ -77,23 +82,23 @@ export default function HeroSlideshow() {
     setIsPaused(false);
   };
 
-  const currentSlide = PDF_DESTINATIONS[currentIndex];
+  const currentSlide = HERO_SLIDES[currentIndex];
   const nextIndex = (currentIndex + 1) % totalSlides;
 
   // Filter categories from the PDF
   const categories = [
-    { name: "All", label: "All 16 Destinations", icon: Compass },
-    { name: "Beach Tours", label: "Beach Tours (4)", icon: Palmtree },
-    { name: "Hill Station Tours", label: "Hill Stations (3)", icon: Mountain },
-    { name: "Konkan Tours", label: "Konkan Coast (3)", icon: Waves },
-    { name: "Religious Tours", label: "Jyotirlinga (3)", icon: Sparkles },
-    { name: "Fort & Historical Tours", label: "Forts (3)", icon: Shield },
+    { name: "All", label: `All ${HERO_SLIDES.length} Destinations`, icon: Compass },
+    { name: "Beach Tours", label: `Beach Tours (${HERO_SLIDES.filter((d) => d.category === "Beach Tours").length})`, icon: Palmtree },
+    { name: "Hill Station Tours", label: `Hill Stations (${HERO_SLIDES.filter((d) => d.category === "Hill Station Tours").length})`, icon: Mountain },
+    { name: "Konkan Tours", label: `Konkan Coast (${HERO_SLIDES.filter((d) => d.category === "Konkan Tours").length})`, icon: Waves },
+    { name: "Religious Tours", label: `Jyotirlinga (${HERO_SLIDES.filter((d) => d.category === "Religious Tours").length})`, icon: Sparkles },
+    { name: "Fort & Historical Tours", label: `Forts (${HERO_SLIDES.filter((d) => d.category === "Fort & Historical Tours").length})`, icon: Shield },
   ];
 
   const handleCategorySelect = (categoryName: string) => {
     setActiveCategory(categoryName);
     if (categoryName === "All") return;
-    const firstIndex = PDF_DESTINATIONS.findIndex((d) => d.category === categoryName);
+    const firstIndex = HERO_SLIDES.findIndex((d) => d.category === categoryName);
     if (firstIndex !== -1) {
       setCurrentIndex(firstIndex);
     }
@@ -156,7 +161,7 @@ export default function HeroSlideshow() {
       */}
       <div className="relative w-full h-[72vh] h-[72svh] min-h-[500px] md:min-h-0 md:h-[520px] lg:h-[580px] sm:rounded-3xl overflow-hidden shadow-2xl border-y sm:border border-white/15 bg-black group">
         {/* Render all 16 destination slides with smooth crossfades */}
-        {PDF_DESTINATIONS.map((slide, index) => {
+        {HERO_SLIDES.map((slide, index) => {
           const isActive = index === currentIndex;
           const isNext = index === nextIndex;
 
@@ -284,7 +289,7 @@ export default function HeroSlideshow() {
 
         {/* Slide Indicators (Dots on Bottom Right) */}
         <div className="hidden md:flex absolute bottom-6 right-6 z-20 items-center gap-1 bg-black/50 backdrop-blur-md px-3 py-2 rounded-full border border-white/15">
-          {PDF_DESTINATIONS.map((slide, index) => {
+          {HERO_SLIDES.map((slide, index) => {
             const isActive = index === currentIndex;
             return (
               <button
