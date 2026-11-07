@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -189,11 +188,25 @@ export default function RootLayout({
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WB8NNL5D');
-window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};`,
+})(window,document,'script','dataLayer','GTM-WB8NNL5D');`,
           }}
         />
         {/* End Google Tag Manager */}
+
+        {/* Google tag (gtag.js) - Google Ads */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-11426591614"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-11426591614');`,
+          }}
+        />
+        {/* End Google tag (gtag.js) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -210,21 +223,6 @@ window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};`,
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-
-        {/* Google Ads Global Site Tag (gtag.js) */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-11426591614"
-          strategy="afterInteractive"
-        />
-        <Script id="google-ads-gtag" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-11426591614');
-          `}
-        </Script>
-        {/* End Google Ads Global Site Tag */}
 
         {children}
       </body>
