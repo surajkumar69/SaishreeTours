@@ -181,12 +181,35 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         <link rel="icon" href="/images/logo.png" />
+        {/* Google Tag Manager */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-WB8NNL5D"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());`,
+          }}
+        />
+        {/* End Google Tag Manager */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className="min-h-screen bg-white text-gray-900 font-sans antialiased selection:bg-[#a0cc28] selection:text-black pb-14 sm:pb-0">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WB8NNL5D"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         {children}
       </body>
     </html>
