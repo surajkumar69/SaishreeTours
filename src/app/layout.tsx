@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -209,6 +210,22 @@ window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};`,
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
+
+        {/* Google Ads Global Site Tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-11426591614"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-11426591614');
+          `}
+        </Script>
+        {/* End Google Ads Global Site Tag */}
+
         {children}
       </body>
     </html>
